@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcs352_lib.a  CMakeFiles/cs352_lib.dir/src/objects/objects.cpp.o CMakeFiles/cs352_lib.dir/src/utils/utils.cpp.o
-/usr/bin/ranlib libcs352_lib.a
