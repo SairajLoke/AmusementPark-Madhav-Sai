@@ -1,0 +1,4 @@
+/home/sai/Sem6/Project/Sem6/AmusementPark-Madhav-Sai/build/CMakeFiles/rebuild_cache.dir
+/home/sai/Sem6/Project/Sem6/AmusementPark-Madhav-Sai/build/CMakeFiles/edit_cache.dir
+/home/sai/Sem6/Project/Sem6/AmusementPark-Madhav-Sai/build/CMakeFiles/cs352_lib.dir
+/home/sai/Sem6/Project/Sem6/AmusementPark-Madhav-Sai/build/CMakeFiles/cs352.dir
