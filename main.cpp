@@ -26,6 +26,7 @@ void motion(int x, int y) {
     glutPostRedisplay();
 }
 
+
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -52,7 +53,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(WINDOW_HEIGHT, WINDOW_WIDTH);
-    glutCreateWindow("Pyramid Example");
+    glutCreateWindow("CS352 AmusementPark Madhav Sai");
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glutDisplayFunc(display);
