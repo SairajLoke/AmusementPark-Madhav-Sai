@@ -6,6 +6,7 @@ Semester Project for Computer Graphics Lab CS352
 ## To build and run the project
 (assuming you are in AmusementPark-Madhav-Sai)
 ```
+mkdir build
 cd build/
 cmake ../
 make 
