@@ -32,5 +32,13 @@ make
 7. Shadows
 8. Cmake
 
+## Done
+1. Cmake
+2. Sun
+3. Easier Mouse functions
+4. Coding styles is being maintained
+5. Central config file
+6. Single command compile
+
 
 
