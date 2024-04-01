@@ -10,7 +10,7 @@ mkdir build
 cd build/
 cmake ../
 make 
-./cscs
+./cs352
 ```
 
 
