@@ -33,12 +33,12 @@ make
 8. Cmake
 
 ## Done  ( in order of implementation)
-:heavy_check_mark: Cmake
-:heavy_check_mark: Better Mouse functions
-:heavy_check_mark: Animated Sunlight ( moves across the sky )
-:heavy_check_mark: Trees
-:heavy_check_mark: Grass textured ground
-:heavy_check_mark: Night Sky
-:heavy_check_mark: Balloon Shooter game
+- [x] Cmake
+- [x] Better Mouse functions
+- [x] Animated Sunlight ( moves across the sky )
+- [x] Trees
+- [x] Grass textured ground
+- [x] Night Sky
+- [x] Balloon Shooter game
 
 
