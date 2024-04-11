@@ -33,12 +33,12 @@ make
 8. Cmake
 
 ## Done  ( in order of implementation)
-[x] 1.Cmake
-[x] 2. Better Mouse functions
-[x] 3. Animated Sunlight ( moves across the sky ) 
-[x] 4. Trees
-[x] 5. Grass textured ground
-[x] 6. Night Sky 
-[x] 7. Balloon Shooter game
+[x] Cmake
+[x] Better Mouse functions
+[x] Animated Sunlight ( moves across the sky )
+[x] Trees
+[x] Grass textured ground
+[x] Night Sky
+[x] Balloon Shooter game
 
 
