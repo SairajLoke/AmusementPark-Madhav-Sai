@@ -1,0 +1,17 @@
+1) Add IITI Branding
+2) Change textures and colours
+3) Add Table, Benches, Umbrellas, Lamp Posts
+4) Remove and Add rides
+5) Add One human
+6) Mouse Controls
+7) You are dead if out of bounds
+8) Add Gate
+9) Burst balloons on mous click
+10) Change surrounding plants to trees that change with the season
+11) Turn on lights if brightness less than some threshold
+12) Add rainfall/snowfall
+13) Add fire torch
+14) Add Pool with water
+15) Screen with video
+16) Swimming pool
+17) Shadows for lamp posts
