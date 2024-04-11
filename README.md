@@ -33,8 +33,8 @@ make
 8. Cmake
 
 ## Done  ( in order of implementation)
-- [x] Cmake
-- [x] Better Mouse functions
+- :heavy_check_mark: Cmake
+- :heavy_check_mark: Better Mouse functions
 - [x] Animated Sunlight ( moves across the sky )
 - [x] Trees
 - [x] Grass textured ground
