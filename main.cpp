@@ -1,4 +1,4 @@
-#include "libs.h"
+// #include "libs.h"
 #include "index.h"
 
 double degToRad(double angle)
@@ -488,54 +488,54 @@ int main(int argc, char **argv)
 
     light();
 
-    LoadTexture("sgi images/grass.sgi", 2);
-    LoadTexture("sgi images/grass.sgi", 3);
-    LoadTexture("sgi images/pirate-copy.sgi", 4);
-    LoadTexture("sgi images/blue_gradient.sgi", 5);
-    LoadTexture("sgi images/baskinrobbinslogo.sgi", 6);
-    LoadTexture("sgi images/iitindore.sgi", 7);
-    LoadTexture("sgi images/dunkindonuts.sgi", 8);
+    LoadTexture("sgi_images/grass.sgi", 2);
+    LoadTexture("sgi_images/grass.sgi", 3);
+    LoadTexture("sgi_images/pirate-copy.sgi", 4);
+    LoadTexture("sgi_images/blue_gradient.sgi", 5);
+    LoadTexture("sgi_images/baskinrobbinslogo.sgi", 6);
+    LoadTexture("sgi_images/iitindore.sgi", 7);
+    LoadTexture("sgi_images/dunkindonuts.sgi", 8);
 
-    LoadTexture("sgi images/nightsky.sgi", 9);
-    LoadTexture("sgi images/nightsky.sgi", 12);
-    LoadTexture("sgi images/nightsky.sgi", 11);
-    LoadTexture("sgi images/nightsky.sgi", 10);
-    LoadTexture("sgi images/nightsky.sgi", 28);
-    LoadTexture("sgi images/nightsky.sgi", 29);
+    LoadTexture("sgi_images/nightsky.sgi", 9);
+    LoadTexture("sgi_images/nightsky.sgi", 12);
+    LoadTexture("sgi_images/nightsky.sgi", 11);
+    LoadTexture("sgi_images/nightsky.sgi", 10);
+    LoadTexture("sgi_images/nightsky.sgi", 28);
+    LoadTexture("sgi_images/nightsky.sgi", 29);
 
-    LoadTexture("sgi images/skydrop.sgi", 13);
-    LoadTexture("sgi images/skydroplogo.sgi", 14);
-    LoadTexture("sgi images/spgrass.sgi", 15);
+    LoadTexture("sgi_images/skydrop.sgi", 13);
+    LoadTexture("sgi_images/skydroplogo.sgi", 14);
+    LoadTexture("sgi_images/spgrass.sgi", 15);
 
-    LoadTexture("sgi images/blue_gradient.sgi", 16);
-    LoadTexture("sgi images/pinkblue.sgi", 17);
-    LoadTexture("sgi images/baskin-robin-ad.sgi", 18);
-    LoadTexture("sgi images/de5b9e.sgi", 19);
-    LoadTexture("sgi images/pinkorange.sgi", 20);
+    LoadTexture("sgi_images/blue_gradient.sgi", 16);
+    LoadTexture("sgi_images/pinkblue.sgi", 17);
+    LoadTexture("sgi_images/baskin-robin-ad.sgi", 18);
+    LoadTexture("sgi_images/de5b9e.sgi", 19);
+    LoadTexture("sgi_images/pinkorange.sgi", 20);
 
-    LoadTexture("sgi images/ff6d0d.sgi", 21);
+    LoadTexture("sgi_images/ff6d0d.sgi", 21);
 
-    LoadTexture("sgi images/dd.sgi", 22);
+    LoadTexture("sgi_images/dd.sgi", 22);
 
-    LoadTexture("sgi images/treetext.sgi", 44);
+    LoadTexture("sgi_images/treetext.sgi", 44);
 
-    LoadTexture("sgi images/abhinandan.sgi", 23);
-    LoadTexture("sgi images/bush.sgi", 24);
+    LoadTexture("sgi_images/abhinandan.sgi", 23);
+    LoadTexture("sgi_images/bush.sgi", 24);
     // LoadTexture("sgi images/treetext.sgi", 44);
-    LoadTexture("sgi images/bushflower.sgi", 25);
-    LoadTexture("sgi images/brickwall.sgi", 26);
-    LoadTexture("sgi images/redwhite.sgi", 27);
-    LoadTexture("sgi images/treebark.sgi", 30);
-    LoadTexture("sgi images/bush.sgi", 31);
+    LoadTexture("sgi_images/bushflower.sgi", 25);
+    LoadTexture("sgi_images/brickwall.sgi", 26);
+    LoadTexture("sgi_images/redwhite.sgi", 27);
+    LoadTexture("sgi_images/treebark.sgi", 30);
+    LoadTexture("sgi_images/bush.sgi", 31);
     
     // LoadTexture("sgi images/treetext.sgi", 44);
     // LoadTexture("sgi images/plant_texture1.sgi", 32);
-    LoadTexture("sgi images/tiles.sgi", 33);
-    LoadTexture("sgi images/water.sgi", 34);
+    LoadTexture("sgi_images/tiles.sgi", 33);
+    LoadTexture("sgi_images/water.sgi", 34);
 
-    LoadTexture("sgi images/scary.sgi", 35);
-    LoadTexture("sgi images/brick_wall.sgi", 35);
-    LoadTexture("sgi images/treetext.sgi", 44);
+    LoadTexture("sgi_images/scary.sgi", 35);
+    LoadTexture("sgi_images/brick_wall.sgi", 35);
+    LoadTexture("sgi_images/treetext.sgi", 44);
 
     glutReshapeFunc(fullScreen);
     glutKeyboardFunc(myKeyboardFunc);
