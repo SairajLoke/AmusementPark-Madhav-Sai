@@ -32,3 +32,14 @@ make
 7. Shadows
 8. Cmake
 
+## Done  ( in order of implementation)
+1. Cmake
+2. Better Mouse functions
+3. Animated Sunlight ( moves across the sky ) 
+4. Trees
+5. Grass textured ground
+6. Night Sky 
+7. Balloon Shooter game
+8. 
+
+
