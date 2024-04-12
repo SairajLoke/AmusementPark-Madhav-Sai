@@ -170,20 +170,21 @@ void mouseButton(int button, int state, int x, int y)
         // camera->refY=y;
         if(button == 3) {
             //scroll up, i.e move fingers down hence zoom out
-            camera->eyeZ += 1;
-            camera->eyeX += tempx/100;
-            camera->eyeY += tempy/100;
-            
+            // camera->eyeZ += 1;
+            // camera->refX += tempx/100;
+            // camera->refY += tempy/100;
+            zoom*=1.1;
         }
         else {
             //scroll down, i.e move fingers up hence zoom in
-            camera->eyeZ -= 1;
-            camera->eyeX -= tempx/100;
-            camera->eyeY -= tempy/100;
-        // }
+            // camera->eyeZ -= 1;
+            // camera->refX -= tempx/100;
+            // camera->refY -= tempy/100;
+            zoom/=1.1;
+        }
     }
 }
-}
+
 void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -195,6 +196,8 @@ void display(void)
     //set the view reference
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    // GLdouble ortho = 5 * zoom;
+    // glOrtho(-ortho, ortho, -ortho, ortho, -5, 5);
     gluLookAt(camera->eyeX, camera->eyeY, camera->eyeZ, camera->refX, camera->refY, camera->refZ, 0, 1, 0);
 
     //enable lighting in the scene
@@ -278,7 +281,7 @@ void display(void)
     //draw human
     glPushMatrix();
     glTranslatef(human2->human_x, human2->human_y, human2->human_z);
-    glScalef(0.3,0.3,0.3);
+    glScalef(0.6,0.6,0.6);
     glRotatef(-(90-human2->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
     human2->drawHuman();
     glPopMatrix();
@@ -535,7 +538,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Carnival in OpenGL");
+    glutCreateWindow("Imagica Amusement Park");
     glShadeModel(GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
