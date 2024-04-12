@@ -599,6 +599,7 @@ int main(int argc, char **argv)
     LoadTexture("sgi_images/dd.sgi", 22);
 
     LoadTexture("sgi_images/treetext.sgi", 44);
+    
 
     LoadTexture("sgi_images/abhinandan.sgi", 23);
     LoadTexture("sgi_images/bush.sgi", 24);
@@ -616,7 +617,10 @@ int main(int argc, char **argv)
 
     LoadTexture("sgi_images/scary.sgi", 35);
     LoadTexture("sgi_images/brick_wall.sgi", 35);
+    LoadTexture("sgi_images/treebark.sgi", 42);
     LoadTexture("sgi_images/treetext.sgi", 44);
+    
+    
 
     glutReshapeFunc(fullScreen);
     glutKeyboardFunc(myKeyboardFunc);

@@ -272,53 +272,84 @@ void Objects::DrawTree(void)
     glPopMatrix();
 }
 
+// void Objects::DrawChristmasTree(void)
+// {
+//     glEnable(GL_TEXTURE_2D);
+//     // Draw the top of the tree (a cone as leaves)
+//     glBindTexture(GL_TEXTURE_2D, ID2[44]);
+//     // GLUquadricObj *qobj;
+//     // qobj = gluNewQuadric();
+//     // gluQuadricDrawStyle(qobj, GLU_FILL);
+//     // Draw trunk
+//     // glColor4ub(139, 69, 19, 255); // Brown color
+//     // glColor3f(0.0f,1.0f,0.0f);
+//     glPushMatrix();
+//     glTranslatef(0, 4, 0); // Move the trunk slightly below the origin
+//     glRotatef(-90, 1, 0, 0); // Rotate the trunk to be vertical
+//     glScalef(1, 1, 10); // Make the trunk longer
+//     glutSolidCube(2); // Draw a simple cube as the trunk
+//     glPopMatrix();
+
+//     // Draw layers of branches
+//     // glColor4ub(0, 100, 0, 255); // Green color
+//     // for (int i = 0; i < 3; ++i) {
+//     //     glPushMatrix();
+//     //     glTranslatef(0, 4 + i * 4, 0); // Move to the top of the trunk
+//     //     // glRotatef(-90, 1, 0, 0); // Rotate to start drawing branches
+//     //     glScalef(1.5 - 0.5 * i, 1.5 - 0.5 * i, 1); // Scale down branches
+//     //     glutSolidCube(3); // Draw a simple cube as the branch
+//     //     glPopMatrix();
+//     // }
+//     // glEnable(GL_TEXTURE_2D);
+//     // Draw the top of the tree (a cone as leaves)
+//     // glBindTexture(GL_TEXTURE_2D, ID2[44]);
+//     glColor4ub(34, 139, 34, 255); // Dark Green color
+//     glPushMatrix();
+//     glTranslatef(0, 12, 0); 
+//     glRotatef(-90, 1, 0, 0); // Move to the top of the trunk
+//     glutSolidCone(5, 30, 4, 20); // Draw a cone as the leaves
+    
+//     glPopMatrix();
+//     glDisable(GL_TEXTURE_2D);
+//     // gluDeleteQuadric(qobj);
+//     // Draw a star at the top
+//     // glColor4ub(255, 255, 0, 255); // Yellow color
+//     // glPushMatrix();
+//     // glTranslatef(0, 15, 0); // Move to the top of the tree
+//     // // glutSolidStar(5, 10, 5); // Draw a star
+//     // glPopMatrix();
+// }
+
+
 void Objects::DrawChristmasTree(void)
 {
-    glEnable(GL_TEXTURE_2D);
-    // Draw the top of the tree (a cone as leaves)
-    glBindTexture(GL_TEXTURE_2D, ID2[44]);
-    // GLUquadricObj *qobj;
-    // qobj = gluNewQuadric();
-    // gluQuadricDrawStyle(qobj, GLU_FILL);
-    // Draw trunk
-    // glColor4ub(139, 69, 19, 255); // Brown color
-    // glColor3f(0.0f,1.0f,0.0f);
-    glPushMatrix();
-    glTranslatef(0, 4, 0); // Move the trunk slightly below the origin
-    glRotatef(-90, 1, 0, 0); // Rotate the trunk to be vertical
-    glScalef(1, 1, 10); // Make the trunk longer
-    glutSolidCube(2); // Draw a simple cube as the trunk
-    glPopMatrix();
-
-    // Draw layers of branches
-    // glColor4ub(0, 100, 0, 255); // Green color
-    // for (int i = 0; i < 3; ++i) {
-    //     glPushMatrix();
-    //     glTranslatef(0, 4 + i * 4, 0); // Move to the top of the trunk
-    //     // glRotatef(-90, 1, 0, 0); // Rotate to start drawing branches
-    //     glScalef(1.5 - 0.5 * i, 1.5 - 0.5 * i, 1); // Scale down branches
-    //     glutSolidCube(3); // Draw a simple cube as the branch
-    //     glPopMatrix();
-    // }
-    // glEnable(GL_TEXTURE_2D);
-    // Draw the top of the tree (a cone as leaves)
-    // glBindTexture(GL_TEXTURE_2D, ID2[44]);
-    glColor4ub(34, 139, 34, 255); // Dark Green color
-    glPushMatrix();
-    glTranslatef(0, 12, 0); 
-    glRotatef(-90, 1, 0, 0); // Move to the top of the trunk
-    glutSolidCone(5, 30, 4, 20); // Draw a cone as the leaves
     
+
+    // Bind texture for leaves
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, ID2[42]);
+    // Draw the trunk (brown)
+    glColor4ub(139, 69, 19, 255); // Brown color
+    glPushMatrix();
+    glTranslatef(0, 4, 0);
+    glRotatef(-90, 1, 0, 0);
+    glScalef(1, 1, 10);
+    glutSolidCube(2);
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
-    // gluDeleteQuadric(qobj);
-    // Draw a star at the top
-    // glColor4ub(255, 255, 0, 255); // Yellow color
-    // glPushMatrix();
-    // glTranslatef(0, 15, 0); // Move to the top of the tree
-    // // glutSolidStar(5, 10, 5); // Draw a star
-    // glPopMatrix();
+    glEnable(GL_TEXTURE_2D);
+    // Draw the leaves (green)
+    glBindTexture(GL_TEXTURE_2D, ID2[44]);
+    glColor4ub(34, 139, 34, 255); // Green color
+    glPushMatrix();
+    glTranslatef(0, 12, 0);
+    glRotatef(-90, 1, 0, 0);
+    glutSolidCone(5, 30, 4, 20);
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
 }
+
 
 
 void Objects::teapot(void)
@@ -732,6 +763,53 @@ void Objects::walls()
         DrawTree();
         glPopMatrix();
     }
+    // for (int i = 0; i < 100; i++) {
+    // int xax, zax;
+    // do {
+    //     xax = rand() % 1200 - 600; // Generate random x within [-600, 600]
+    //     zax = rand() % 1200 - 600; // Generate random z within [-600, 600]
+    // } while (xax*xax + zax*zax >= 360000 || (xax <= 360 && xax >= -360) || (zax <= 400&& zax >= -340));
+
+    // glPushMatrix();
+    // glTranslatef(xax, -20, zax);
+    // double sx = double(rand() % 100 + 100) / 100.0;
+    // double sy = double(rand() % 100 + 100) / 100.0;
+    // double sz = double(rand() % 100 + 100) / 100.0;
+    // glScalef(sx, sy, sz);
+    // DrawChristmasTree();
+    // glPopMatrix();
+    // }
+
+    for (int i = 0; i < 500; i++) {
+    int xax, zax;
+    double randVal = (double)rand() / RAND_MAX; // Generate a random value between 0 and 1
+
+    if (randVal > 0.75) {
+        // Generate random points in adjacent areas
+        do {
+            xax = rand() % 1200 - 600; // Generate random x within [-600, 600]
+            zax = rand() % 1200 - 600; // Generate random z within [-600, 600]
+        } while (xax*xax + zax*zax >= 360000 || (xax <= 360 && xax >= -360) || (zax <= 400&& zax >= -340));
+    } else {
+        // Generate random points in diagonal parts
+        do {
+            xax = rand() % 1200 - 600; // Generate random x within [-600, 600]
+            zax = rand() % 1200 - 600; // Generate random z within [-600, 600]
+        } while (xax*xax + zax*zax >= 360000 || (abs(xax) <= 360 && abs(zax) <= 360));
+    }
+
+    glPushMatrix();
+    glTranslatef(xax, -20, zax);
+    double sx = double(rand() % 100 + 100) / 100.0;
+    double sy = double(rand() % 100 + 100) / 100.0;
+    double sz = double(rand() % 100 + 100) / 100.0;
+    glScalef(sx, sy, sz);
+    DrawChristmasTree();
+    glPopMatrix();
+    }
+
+
+
     
     glDisable(GL_TEXTURE_2D);
 }
