@@ -11,21 +11,21 @@ static int rotateX = 0;
 static int rotateY = 0;
 double zoom = 1.0;
 
-void mouse(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        lastX = x;
-        lastY = y;
-    }
-    else if (button == 4) { // Scroll up
-        zoom *= 1.1;
-    }
-    else if (button == 3) { // Scroll down
-        zoom /= 1.1;
-        if (zoom < 0.1) // Avoid zooming in too much
-            zoom = 0.1;
-    }
-    glutPostRedisplay();
-}
+// void mouse(int button, int state, int x, int y) {
+//     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+//         lastX = x;
+//         lastY = y;
+//     }
+//     else if (button == 4) { // Scroll up
+//         zoom *= 1.1;
+//     }
+//     else if (button == 3) { // Scroll down
+//         zoom /= 1.1;
+//         if (zoom < 0.1) // Avoid zooming in too much
+//             zoom = 0.1;
+//     }
+//     glutPostRedisplay();
+// }
 
 // void myKeyboardFunc(unsigned char key, int x, int y) {
 //     switch (key) {
@@ -148,10 +148,10 @@ void mouseMove(int x, int y)
 
 void mouseButton(int button, int state, int x, int y)
 {
-    cout<<x<<" "<<y<<endl;
+    cout<<x<<" "<<y<<" "<<state<<endl;
     int tempx=x-camera->eyeX,tempy=y-camera->eyeY;
 
-
+    
     //function to handle mouse button press
     if (button == GLUT_LEFT_BUTTON)
     {
@@ -170,9 +170,9 @@ void mouseButton(int button, int state, int x, int y)
         // camera->refY=y;
         if(button == 3) {
             //scroll up, i.e move fingers down hence zoom out
-            camera->eyeZ += (tempx+tempy)/200;
-            // camera->eyeX += tempx/100;
-            // camera->eyeY += tempy/100;
+            camera->eyeZ += 1;
+            camera->eyeX += tempx/100;
+            camera->eyeY += tempy/100;
             
         }
         else {
@@ -180,10 +180,10 @@ void mouseButton(int button, int state, int x, int y)
             camera->eyeZ -= 1;
             camera->eyeX -= tempx/100;
             camera->eyeY -= tempy/100;
-        }
+        // }
     }
 }
-
+}
 void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
