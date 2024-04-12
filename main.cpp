@@ -216,16 +216,17 @@ void display(void)
     spotLight2();
     spotLight3();
     spotLight4();
-
+    glPushMatrix();
+    glScalef(0.3,0.3,0.3);
     //generate the circular, sandy ground
     ground();
-
+    
     //draw the boundary wall
     objects->walls();
     
     //draw the boundary flags
     objects->flags();
-
+    
     //draw the swimming pool
     objects->drawPool();
 
@@ -320,6 +321,7 @@ void display(void)
     glTranslatef(70,10,-60);
     rides->carousel();
     glPopMatrix();
+    glPopMatrix();
     // glPopMatrix(); just trying
     double test_theta = -45;
 
@@ -347,7 +349,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
     //     camera->refX += 1.0; //look right
     //     break;
     case 'x':
-        if(camera->eyeX>=600)camera->eyeX -= 7.0;
+        if(camera->eyeX>=-600)camera->eyeX -= 7.0;
         // cout<<camera->eyeX<<endl; 
         break;
     case 'a':

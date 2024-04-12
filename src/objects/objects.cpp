@@ -675,10 +675,10 @@ void Objects::walls()
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, ID2[43]);
     //first part in front
-    for (float i = -120; i <= -10; i += 10)
+    for (float i = -360; i <= -20; i += 14)
     {
         glPushMatrix();
-        glTranslatef(i, -20, 80);
+        glTranslatef(i, -20, 320);
         // wall();
         DrawChristmasTree();
         // DrawUmbrella();
@@ -687,10 +687,10 @@ void Objects::walls()
     }
 
     //second part in front
-    for (float i = 20; i <= 120; i += 10)
+    for (float i = 20; i <= 360; i += 14)
     {
         glPushMatrix();
-        glTranslatef(i, -20, 80);
+        glTranslatef(i, -20, 320);
         // wall();
         DrawChristmasTree();
         glPopMatrix();
@@ -698,20 +698,22 @@ void Objects::walls()
 
     
     //back part
-    for (float i = -120; i <= 120; i += 10)
+    for (float i = -360; i <= 360; i += 14)
     {
         glPushMatrix();
-        glTranslatef(i, -20, -100);
+        glTranslatef(i, -20, -400);
         // wall();
+        glScalef(1.4,1.1,1.4);
         DrawChristmasTree();
         glPopMatrix();
     }
 
     //left side
-    for (float i = -87; i <= 87; i += 10)
+    for (float i = -395; i <= 315; i += 20)
     {
         glPushMatrix();
-        glTranslatef(-123, -20, i);
+        glTranslatef(-300, -20, i);
+        glScalef(1.6,3.5,1.6);
         glRotatef(90, 0, 1, 0);
         // wall();
         DrawTree();
@@ -719,15 +721,18 @@ void Objects::walls()
     }
 
     //right side
-    for (float i = -87; i <= 87; i += 10)
+    for (float i = -395; i <= 315; i += 20)
     {
         glPushMatrix();
-        glTranslatef(127, -20, i);
+        
+        glTranslatef(300, -20, i);
+        glScalef(1.6,3.5,1.6);
         glRotatef(90, 0, 1, 0);
         // wall();
         DrawTree();
         glPopMatrix();
     }
+    
     glDisable(GL_TEXTURE_2D);
 }
 

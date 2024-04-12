@@ -24,7 +24,7 @@ void ground()
     // Set the center of the circle
     float centerX = 0.0f;
     float centerY = 0.0f;
-    float radius = 200.0f;
+    float radius = 600.0f;
 
     // Define the vertices of the circle
     for (int i = 0; i <= numSegments; i++) {
