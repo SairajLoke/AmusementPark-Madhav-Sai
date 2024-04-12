@@ -570,13 +570,18 @@ int main(int argc, char **argv)
     light();
 
     LoadTexture("sgi_images/grass.sgi", 2);
-    LoadTexture("sgi_images/grass.sgi", 3);
+    LoadTexture("sgi_images/grass.sgi", 2);
+    LoadTexture("sgi_images/grass.sgi", 2);
+    // LoadTexture("sgi_images/treetext.sgi", 44);
+    LoadTexture("sgi_images/treebark.sgi", 42);
+    
+    // cout<<"here"<<endl;
     LoadTexture("sgi_images/pirate-copy.sgi", 4);
     LoadTexture("sgi_images/blue_gradient.sgi", 5);
     LoadTexture("sgi_images/baskinrobbinslogo.sgi", 6);
     LoadTexture("sgi_images/iitindore.sgi", 7);
     LoadTexture("sgi_images/dunkindonuts.sgi", 8);
-
+    
     LoadTexture("sgi_images/nightsky.sgi", 9);
     LoadTexture("sgi_images/nightsky.sgi", 12);
     LoadTexture("sgi_images/nightsky.sgi", 11);
@@ -587,7 +592,7 @@ int main(int argc, char **argv)
     LoadTexture("sgi_images/skydrop.sgi", 13);
     LoadTexture("sgi_images/skydroplogo.sgi", 14);
     LoadTexture("sgi_images/spgrass.sgi", 15);
-
+    
     LoadTexture("sgi_images/blue_gradient.sgi", 16);
     LoadTexture("sgi_images/pinkblue.sgi", 17);
     LoadTexture("sgi_images/baskin-robin-ad.sgi", 18);
@@ -600,10 +605,11 @@ int main(int argc, char **argv)
 
     LoadTexture("sgi_images/treetext.sgi", 44);
     
-
+    
     LoadTexture("sgi_images/abhinandan.sgi", 23);
+    LoadTexture("sgi_images/treetext.sgi", 44);
     LoadTexture("sgi_images/bush.sgi", 24);
-    // LoadTexture("sgi images/treetext.sgi", 44);
+    
     LoadTexture("sgi_images/bushflower.sgi", 25);
     LoadTexture("sgi_images/brickwall.sgi", 26);
     LoadTexture("sgi_images/redwhite.sgi", 27);
@@ -617,8 +623,7 @@ int main(int argc, char **argv)
 
     LoadTexture("sgi_images/scary.sgi", 35);
     LoadTexture("sgi_images/brick_wall.sgi", 35);
-    LoadTexture("sgi_images/treebark.sgi", 42);
-    LoadTexture("sgi_images/treetext.sgi", 44);
+ 
     
     
 

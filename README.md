@@ -42,4 +42,4 @@ make
 - [x] Balloon Shooter game
 - [x] Restricted View
 - [x] Added better keyboard controls
-
+- [x] Succesfull Tree texture

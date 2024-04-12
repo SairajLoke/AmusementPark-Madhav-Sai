@@ -328,8 +328,9 @@ void Objects::DrawChristmasTree(void)
     // Bind texture for leaves
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, ID2[42]);
+    glTexCoord2f(0.5f, 0.5f);
     // Draw the trunk (brown)
-    glColor4ub(139, 69, 19, 255); // Brown color
+    // glColor4ub(139, 69, 19, 255); // Brown color
     glPushMatrix();
     glTranslatef(0, 4, 0);
     glRotatef(-90, 1, 0, 0);
@@ -340,7 +341,9 @@ void Objects::DrawChristmasTree(void)
     glEnable(GL_TEXTURE_2D);
     // Draw the leaves (green)
     glBindTexture(GL_TEXTURE_2D, ID2[44]);
-    glColor4ub(34, 139, 34, 255); // Green color
+    
+
+    // glColor4ub(34, 139, 34, 255); // Green color
     glPushMatrix();
     glTranslatef(0, 12, 0);
     glRotatef(-90, 1, 0, 0);
@@ -703,8 +706,8 @@ void Objects::tree()
 void Objects::walls()
 {
     //function to draw the wall boundary
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, ID2[43]);
+    // glEnable(GL_TEXTURE_2D);
+    // glBindTexture(GL_TEXTURE_2D, ID2[43]);
     //first part in front
     for (float i = -360; i <= -20; i += 14)
     {
@@ -811,7 +814,7 @@ void Objects::walls()
 
 
     
-    glDisable(GL_TEXTURE_2D);
+    // glDisable(GL_TEXTURE_2D);
 }
 
 void Objects::streetLampbody()

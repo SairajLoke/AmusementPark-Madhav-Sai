@@ -3,7 +3,7 @@
 void ground()
 {
     // Set the number of segments in the circle
-    int numSegments = 1000;
+    int numSegments = 10000;
 
     // Enable texturing
     glEnable(GL_TEXTURE_2D);
@@ -57,7 +57,7 @@ void sky(float x, float y, float z, float width, float height, float length)
     //function to draw the sky
     
     materialProperty();
-    glDisable(GL_DEPTH_TEST);
+    
     x = x - width / 2;
     y = y - height / 2;
     z = z - length / 2;
