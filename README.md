@@ -34,7 +34,7 @@ make
 
 ## Done  ( in order of implementation)
 - [x] Cmake
-- [x] Better Mouse functions
+- [x] Better Mouse functions 
 - [x] Animated Sunlight ( moves across the sky )
 - [x] Trees
 - [x] Grass textured ground

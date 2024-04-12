@@ -6,7 +6,48 @@ double degToRad(double angle)
     double pi = 3.14159265359;
     return (angle * (pi / 180));
 }
+static int lastX, lastY;
+static int rotateX = 0;
+static int rotateY = 0;
+double zoom = 1.0;
 
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        lastX = x;
+        lastY = y;
+    }
+    else if (button == 4) { // Scroll up
+        zoom *= 1.1;
+    }
+    else if (button == 3) { // Scroll down
+        zoom /= 1.1;
+        if (zoom < 0.1) // Avoid zooming in too much
+            zoom = 0.1;
+    }
+    glutPostRedisplay();
+}
+
+// void myKeyboardFunc(unsigned char key, int x, int y) {
+//     switch (key) {
+//     case 'm': // Increase zoom with 'm'
+//         zoom *= 1.1;
+//         break;
+//     case 'n': // Decrease zoom with 'n'
+//         zoom /= 1.1;
+//         if (zoom < 0.1) // Avoid zooming in too much
+//             zoom = 0.1;
+//         break;
+//     }
+//     glutPostRedisplay();
+// }
+
+void motion(int x, int y) {
+    rotateX += y - lastY;
+    rotateY += x - lastX;
+    lastX = x;
+    lastY = y;
+    glutPostRedisplay();
+}
 //flags to toggle the rides
 GLboolean  aroundTheWorldFlag = false, rideFlag = false, carouselFlag = false, doorFlag = false,  day = true;
 
@@ -81,6 +122,67 @@ struct Camera {
 };
 
 Camera* camera = new Camera();
+
+void mouseMove(int x, int y)
+{
+    //function to change the view reference according to mouse motion
+
+    mouse_x = (double)x;
+    mouse_y = (double)y;
+
+    if (mouse_x_prev == -1)
+        mouse_x_prev = mouse_x;
+    if (mouse_y_prev == -1)
+        mouse_y_prev = mouse_y;
+
+
+    double delta_x = mouse_x - mouse_x_prev;
+    double delta_y = mouse_y - mouse_y_prev;
+
+    camera->eyeX += (-delta_x);
+    camera->eyeY += (-delta_y);
+
+    mouse_x_prev = mouse_x;
+    mouse_y_prev = mouse_y;
+}
+
+void mouseButton(int button, int state, int x, int y)
+{
+    cout<<x<<" "<<y<<endl;
+    int tempx=x-camera->eyeX,tempy=y-camera->eyeY;
+
+
+    //function to handle mouse button press
+    if (button == GLUT_LEFT_BUTTON)
+    {
+        if (state == GLUT_UP)
+        {
+            mouse_x_prev = -1;
+            mouse_y_prev = -1;
+        }
+    }
+
+    //function to handle mousepad scroll for zoom functionality
+    if(button == 3 || button == 4) 
+    {
+        if (state == GLUT_UP) return;
+        // camera->refX=x;
+        // camera->refY=y;
+        if(button == 3) {
+            //scroll up, i.e move fingers down hence zoom out
+            camera->eyeZ += (tempx+tempy)/200;
+            // camera->eyeX += tempx/100;
+            // camera->eyeY += tempy/100;
+            
+        }
+        else {
+            //scroll down, i.e move fingers up hence zoom in
+            camera->eyeZ -= 1;
+            camera->eyeX -= tempx/100;
+            camera->eyeY -= tempy/100;
+        }
+    }
+}
 
 void display(void)
 {
@@ -225,56 +327,8 @@ void display(void)
 }
 
 
-void mouseMove(int x, int y)
-{
-    //function to change the view reference according to mouse motion
-
-    mouse_x = (double)x;
-    mouse_y = (double)y;
-
-    if (mouse_x_prev == -1)
-        mouse_x_prev = mouse_x;
-    if (mouse_y_prev == -1)
-        mouse_y_prev = mouse_y;
 
 
-    double delta_x = mouse_x - mouse_x_prev;
-    double delta_y = mouse_y - mouse_y_prev;
-
-    camera->eyeX += (-delta_x);
-    camera->eyeY += (-delta_y);
-
-    mouse_x_prev = mouse_x;
-    mouse_y_prev = mouse_y;
-}
-
-void mouseButton(int button, int state, int x, int y)
-{
-    //function to handle mouse button press
-    if (button == GLUT_LEFT_BUTTON)
-    {
-        if (state == GLUT_UP)
-        {
-            mouse_x_prev = -1;
-            mouse_y_prev = -1;
-        }
-    }
-
-    //function to handle mousepad scroll for zoom functionality
-    if(button == 3 || button == 4) 
-    {
-        if (state == GLUT_UP) return;
-
-        if(button == 3) {
-            //scroll up, i.e move fingers down hence zoom out
-            camera->eyeZ += 1;
-        }
-        else {
-            //scroll down, i.e move fingers up hence zoom in
-            camera->eyeZ -= 1;
-        }
-    }
-}
 
 
 
