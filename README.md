@@ -40,5 +40,6 @@ make
 - [x] Grass textured ground
 - [x] Night Sky
 - [x] Balloon Shooter game
-
+- [x] Restricted View
+- [x] Added better keyboard controls
 

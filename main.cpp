@@ -74,9 +74,9 @@ struct Camera {
     int currView;
 
     Camera() {
-        eyeX = -10;
-        eyeY = 5.0;
-        eyeZ = 100;
+        eyeX = 0.0;
+        eyeY = 0.0;
+        eyeZ = 0.0;
         refX = 0;
         refY = 0;
         refZ = 0;  
@@ -339,11 +339,33 @@ void myKeyboardFunc(unsigned char key, int x, int y)
 {
     switch (key)
     {
-    case 'a':
-        camera->refX -= 1.0; //look left
+        
+    // case 'a':
+    //     camera->refX -= 1.0; //look left
+    //     break;
+    // case 'd':
+    //     camera->refX += 1.0; //look right
+    //     break;
+    case 'x':
+        if(camera->eyeX>=600)camera->eyeX -= 7.0;
+        // cout<<camera->eyeX<<endl; 
         break;
-    case 'd':
-        camera->refX += 1.0; //look right
+    case 'a':
+        if(camera->eyeY<=500)camera->eyeY += 7.0; 
+        // cout<<camera->eyeY<<endl; 
+        break;
+    case 'z':
+        // cout<<camera->eyeZ<<endl;
+        if(camera->eyeZ>=-500)camera->eyeZ -= 7.0; 
+        break;
+    case 'X':
+        if(camera->eyeX<=600)camera->eyeX += 7.0; 
+        break;
+    case 'A':
+        if(camera->eyeY>=-20)camera->eyeY -= 7.0; 
+        break;
+    case 'Z':
+        if(camera->eyeZ<=500)camera->eyeZ += 7.0; 
         break;
     case 's':
         human->sittingRollerCoaster = true; //sit in roller coaster
@@ -422,7 +444,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
             glDisable(GL_LIGHT4);
             break;
         }
-    case 'z':
+    case 'f':
         if (objects->controlPointsFlag == false)
         {
             objects->controlPointsFlag = true;
