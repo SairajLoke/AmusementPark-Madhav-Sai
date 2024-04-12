@@ -148,10 +148,9 @@ void mouseMove(int x, int y)
 
 void mouseButton(int button, int state, int x, int y)
 {
-    cout<<x<<" "<<y<<" "<<state<<endl;
-    int tempx=x-camera->eyeX,tempy=y-camera->eyeY;
-
-    
+    // cout<<x<<" "<<y<<" "<<state<<endl;
+    // int tempx=x-camera->eyeX,tempy=y-camera->eyeY;
+    cout<<camera->eyeX<<" "<<camera->eyeY<<" "<<camera->eyeZ<<endl;
     //function to handle mouse button press
     if (button == GLUT_LEFT_BUTTON)
     {
@@ -191,7 +190,7 @@ void display(void)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60, 1, 1, 300);
+    gluPerspective(45, 2, 1, 500);
     
     //set the view reference
     glMatrixMode(GL_MODELVIEW);
@@ -207,7 +206,9 @@ void display(void)
     glPushMatrix();
     sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 250, 250, 250);
     glPopMatrix();
-
+    //draw the four lamp posts
+    // glPushMatrix();
+    // glTranslatef(10, -5, -100);Just trying
     glEnable(GL_DEPTH_TEST);
 
     //draw the four spotLights
@@ -229,7 +230,6 @@ void display(void)
     objects->drawPool();
 
 
-    //draw the four lamp posts
 
     glPushMatrix();
     glTranslatef(-25, 0, 0);
@@ -320,7 +320,7 @@ void display(void)
     glTranslatef(70,10,-60);
     rides->carousel();
     glPopMatrix();
-
+    // glPopMatrix(); just trying
     double test_theta = -45;
 
     glDisable(GL_LIGHTING);
