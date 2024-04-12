@@ -170,17 +170,17 @@ void mouseButton(int button, int state, int x, int y)
         // camera->refY=y;
         if(button == 3) {
             //scroll up, i.e move fingers down hence zoom out
-            // camera->eyeZ += 1;
+            camera->eyeZ += 1;
             // camera->refX += tempx/100;
             // camera->refY += tempy/100;
-            zoom*=1.1;
+            // zoom*=1.1;
         }
         else {
             //scroll down, i.e move fingers up hence zoom in
-            // camera->eyeZ -= 1;
+            camera->eyeZ -= 1;
             // camera->refX -= tempx/100;
             // camera->refY -= tempy/100;
-            zoom/=1.1;
+            // zoom/=1.1;
         }
     }
 }
