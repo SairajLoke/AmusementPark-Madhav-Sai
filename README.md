@@ -12,8 +12,6 @@ cmake ../
 make 
 ./cs352
 ```
-
-
 ## Practices to follow
 1. Coding style
 2. Separate Constants file

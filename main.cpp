@@ -572,10 +572,8 @@ int main(int argc, char **argv)
     LoadTexture("sgi_images/grass.sgi", 2);
     LoadTexture("sgi_images/grass.sgi", 2);
     LoadTexture("sgi_images/grass.sgi", 2);
-    // LoadTexture("sgi_images/treetext.sgi", 44);
+
     LoadTexture("sgi_images/treebark.sgi", 42);
-    
-    // cout<<"here"<<endl;
     LoadTexture("sgi_images/pirate-copy.sgi", 4);
     LoadTexture("sgi_images/blue_gradient.sgi", 5);
     LoadTexture("sgi_images/baskinrobbinslogo.sgi", 6);
