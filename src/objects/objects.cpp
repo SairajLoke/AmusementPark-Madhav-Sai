@@ -785,19 +785,19 @@ void Objects::walls()
 
     for (int i = 0; i < 500; i++) {
     int xax, zax;
-    double randVal = (double)rand() / RAND_MAX; // Generate a random value between 0 and 1
+    double randVal = (double)rand() / RAND_MAX; 
 
     if (randVal > 0.75) {
-        // Generate random points in adjacent areas
+       
         do {
-            xax = rand() % 1200 - 600; // Generate random x within [-600, 600]
-            zax = rand() % 1200 - 600; // Generate random z within [-600, 600]
+            xax = rand() % 1200 - 600; 
+            zax = rand() % 1200 - 600; 
         } while (xax*xax + zax*zax >= 360000 || (xax <= 360 && xax >= -360) || (zax <= 400&& zax >= -340));
     } else {
-        // Generate random points in diagonal parts
+        
         do {
-            xax = rand() % 1200 - 600; // Generate random x within [-600, 600]
-            zax = rand() % 1200 - 600; // Generate random z within [-600, 600]
+            xax = rand() % 1200 - 600; 
+            zax = rand() % 1200 - 600; 
         } while (xax*xax + zax*zax >= 360000 || (abs(xax) <= 360 && abs(zax) <= 360));
     }
 
