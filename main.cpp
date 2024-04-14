@@ -12,23 +12,35 @@ static int rotateY = 0;
 double zoom = 1.0;
 
 
-#include <GL/glut.h>
+#include <stdlib.h> // for random number generation
+#include <time.h>   // for seeding the random number generator
 
 void human3D() {
-    // Assuming a simple standing human figure, we can extrude the 2D shapes into 3D objects.
-    // We'll use basic geometric shapes like cylinders and spheres for limbs and torso, respectively.
-    // Assume the human is standing upright along the z-axis.
+    // Seed the random number generator
+    // srand(time(NULL));
 
+    // Generate random heights for limbs
+    float torsoHeight = (float)(rand() % 20 + 80) / 100.0f; // Random height for torso (between 0.8 and 1.0)
+    float limbHeight = (float)(rand() % 30 + 150) / 1000.0f; // Random height for limbs (between 0.15 and 0.18)
+
+    // Generate random colors for spheres and bottom cylinders
+    int torsoRed = rand() % 256;
+    int torsoGreen = rand() % 256;
+    int torsoBlue = rand() % 256;
+    glPushMatrix();
+    glTranslatef(0,limbHeight-0.5,0);
     // Body Torso (Sphere)
     glPushMatrix();
-    glColor3ub(255, 210, 150);
+    glColor3ub(torsoRed, torsoGreen, torsoBlue);
     glTranslatef(0.0f, 0.0f, 1.0f); // Translate to a position in 3D space
     glutSolidSphere(0.08f, 100, 100); // Representing the slightly smaller torso as a sphere
     glPopMatrix();
 
     // Head (Sphere)
     glPushMatrix();
-    glColor3ub(255, 210, 150);
+    // Random skin shade for head
+    int skinShade = rand() % 51 + 200; // Random shade between 200 and 250 for a lighter skin tone
+    glColor3ub(skinShade, skinShade - 50, skinShade - 50); // Slightly darker for variation
     glTranslatef(0.0f, 0.11f, 1.0f); // Translate to head position
     glutSolidSphere(0.03f, 100, 100); // Representing the head as a smaller sphere
     glPopMatrix();
@@ -38,45 +50,38 @@ void human3D() {
     quadratic = gluNewQuadric();
 
     glPushMatrix();
-    glColor3ub(255, 210, 150);
+    glColor3ub(torsoRed, torsoGreen, torsoBlue);
     glTranslatef(0.05f, 0.0f, 1.0f); // Translate to arm position
     glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
-    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    gluCylinder(quadratic, 0.01f, 0.01f, limbHeight, 100, 100); // Representing arms as cylinders
     glPopMatrix();
 
     glPushMatrix();
-    glColor3ub(255, 210, 150);
+    glColor3ub(torsoRed, torsoGreen, torsoBlue);
     glTranslatef(-0.05f, 0.0f, 1.0f); // Translate to other arm position
     glRotatef(-90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
-    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    gluCylinder(quadratic, 0.01f, 0.01f, limbHeight, 100, 100); // Representing arms as cylinders
     glPopMatrix();
-
-    // // Additional arms
-    // glPushMatrix();
-    // glColor3ub(255, 210, 150);
-    // glTranslatef(0.05f, 0.0f, 1.0f); // Translate to additional arm position
-    // glRotatef(180.0f, 0.0f, 1.0f, 0.0f); // Rotate the additional arm to stand vertically
-    // gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing additional arm as a cylinder
-    // glPopMatrix();
 
     // Legs
     glPushMatrix();
-    glColor3ub(255, 210, 150);
-    glTranslatef(0.025f, -0.1f, 1.0f); // Translate to leg position
+    glColor3ub(torsoRed, torsoGreen, torsoBlue);
+    glTranslatef(0.025f, -0.08f, 1.0f); // Translate to leg position
     glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the leg to stand vertically
-    gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing legs as cylinders
+    gluCylinder(quadratic, 0.015f, 0.015f, limbHeight, 100, 100); // Representing legs as cylinders
     glPopMatrix();
 
-    // Additional leg
     glPushMatrix();
-    glColor3ub(255, 210, 150);
-    glTranslatef(-0.025f, -0.1f, 1.0f); // Translate to additional leg position
+    glColor3ub(torsoRed, torsoGreen, torsoBlue);
+    glTranslatef(-0.025f, -0.08f, 1.0f); // Translate to additional leg position
     glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the additional leg to stand vertically
-    gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing additional leg as a cylinder
+    gluCylinder(quadratic, 0.015f, 0.015f, limbHeight, 100, 100); // Representing additional leg as a cylinder
     glPopMatrix();
-
+    
+    glPopMatrix();
     gluDeleteQuadric(quadratic);
 }
+
 
 
 
@@ -448,7 +453,7 @@ void display(void)
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(10,-2,10);
+    glTranslatef(10,0,10);
     glScalef(10,10,10);
     human3D();
     glPopMatrix();
