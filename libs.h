@@ -19,7 +19,8 @@
 #include <string.h>
 #include<unistd.h>    
 #include<chrono>
-
+#include<GL/freeglut.h>
+// #include<GL
 using namespace std;
 
 #endif

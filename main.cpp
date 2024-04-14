@@ -140,6 +140,7 @@ Human* human2 = new Human(false,100, -40, 100);
 
 Rides* rides = new Rides();
 Objects* objects = new Objects();
+// Trees* tree=new 
 // static LightObject sun {"SUN"};
 
 struct Camera {
@@ -556,6 +557,13 @@ void display(void)
     glScalef(10,10,10);
     human3D();
     glPopMatrix();
+    glPushMatrix();
+    glTranslatef(-10,2,10);
+    glScalef(0.1,0.1,0.1);
+    drawTree(10,3);
+    glPopMatrix();
+    // drawTree(1,1);
+    
     // glPopMatrix(); just trying
     double test_theta = -45;
 

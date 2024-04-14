@@ -3,12 +3,12 @@ int ptr = 0;
 int flag=1;
 int randomNumbers[100000];
 int maxDepth;
-void drawSolidCylinder(GLdouble radius, GLdouble height, GLint slices, GLint stacks) {
-    GLUquadricObj* quadric = gluNewQuadric();
-    gluQuadricDrawStyle(quadric, GLU_FILL);
-    gluCylinder(quadric, radius, radius, height, slices, stacks);
-    gluDeleteQuadric(quadric);
-}
+// voidglutSolidCylinder(GLdouble radius, GLdouble height, GLint slices, GLint stacks) {
+//     GLUquadricObj* quadric = gluNewQuadric();
+//     gluQuadricDrawStyle(quadric, GLU_FILL);
+//     gluCylinder(quadric, radius, radius, height, slices, stacks);
+//     gluDeleteQuadric(quadric);
+// }
 int getRandomNumber()
 {
     ptr++;
@@ -46,10 +46,10 @@ void drawBranch(float parentLength, float parentRadius, int depth, int branching
 
     // 50-50 chance of branching and terminating
     glColor3f(105.0 / 255.0, 75.0 / 255.0, 55.0 / 255.0);
-    if (getRandomNumber() > RAND_MAX / 3)
+    if (rand() > RAND_MAX / 3)
     {
         // we want to draw a cylinder representing this branch
-        drawSolidCylinder(branchRadius, branchLength, 8, 8);
+       glutSolidCylinder(branchRadius, branchLength, 8, 8);
 
         // in this context we want to draw branchingFactor branches
         for (int i = 0; i < branchingFactor; i++)
@@ -105,7 +105,7 @@ void drawTree(int seed, int depth)
     glPushMatrix();
     glRotatef(90, -1, 0, 0);
 
-    drawSolidCylinder(radius, height, 30, 30);
+   glutSolidCylinder(radius, height, 30, 30);
 
     for (int i = 0; i < branchingFactor; i++)
     {
@@ -113,7 +113,7 @@ void drawTree(int seed, int depth)
         // float heightFromBase = 0;
         // glPushMatrix();
         glTranslatef(0, 0, heightFromBase);
-         glColor3f(105.0 / 255.0, 75.0 / 255.0, 55.0 / 255.0);
+        glColor3f(105.0 / 255.0, 75.0 / 255.0, 55.0 / 255.0);
         drawBranch(height, radius * 2, 1, branchingFactor, heightFromBase, 0);
         glTranslatef(0, 0, -heightFromBase);
         // glPopMatrix();
