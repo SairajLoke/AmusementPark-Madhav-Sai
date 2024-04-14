@@ -240,6 +240,7 @@ struct Camera {
 };
 
 Camera* camera = new Camera();
+static LightObject sun {"SUN"};
 
 void mouseMove(int x, int y)
 {
@@ -330,10 +331,11 @@ void display(void)
     glEnable(GL_DEPTH_TEST);
 
     //draw the four spotLights
-    spotLight1();
-    spotLight2();
-    spotLight3();
-    spotLight4();
+    // spotLight1();
+    // spotLight2();
+    // spotLight3();
+    // spotLight4();
+    
     glPushMatrix();
     glScalef(0.3,0.3,0.3);
     //generate the circular, sandy ground
@@ -699,8 +701,8 @@ void animate()
     //animate all the motions 
     rides->animateRides(aroundTheWorldFlag, rideFlag, carouselFlag, doorFlag);
     objects->animateFlag();
-    // sun.animateLightObject();
-    // sun.renderLightObject();
+    sun.animateLightObject();
+    sun.renderLightObject();
 
     objects->shoot_arrow();
     objects->balloonUpdater();
