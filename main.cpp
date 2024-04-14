@@ -457,6 +457,11 @@ void display(void)
     glScalef(10,10,10);
     human3D();
     glPopMatrix();
+    glPushMatrix();
+    glTranslatef(-10,0,-10);
+    glScalef(10,10,10);
+    human3D();
+    glPopMatrix();
     // glPopMatrix(); just trying
     double test_theta = -45;
 
