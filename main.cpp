@@ -440,7 +440,7 @@ void display(void)
 
 
 
-        glPushMatrix();
+    glPushMatrix();
     glTranslatef(-200,0,-250);
     glScalef(2,2,2);
    
@@ -901,11 +901,14 @@ int main(int argc, char **argv)
     
     // LoadTexture("sgi images/treetext.sgi", 44);
     // LoadTexture("sgi images/plant_texture1.sgi", 32);
+    
     LoadTexture("sgi_images/tiles.sgi", 33);
     LoadTexture("sgi_images/water.sgi", 34);
 
     LoadTexture("sgi_images/scary.sgi", 35);
     LoadTexture("sgi_images/brick_wall.sgi", 35);
+
+    LoadTexture("sgi_images/treetext.sgi", 44);
  
     
     

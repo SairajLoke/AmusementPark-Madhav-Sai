@@ -165,7 +165,6 @@ void Objects::balloonShooterStall()
 
     materialProperty();
     glEnable(GL_TEXTURE_2D);
-
     glBindTexture(GL_TEXTURE_2D, ID2[25]); //
     glPushMatrix();
     quadricShape1();
