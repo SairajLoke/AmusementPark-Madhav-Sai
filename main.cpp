@@ -418,18 +418,22 @@ void display(void)
 
     //Draw the roller coster ride
     glPushMatrix();
+    glTranslatef(-100,18,80);
+    glScalef(2,2,2);
+    glPushMatrix();
     glTranslatef(-70, -5, 40);
     glTranslatef(0, 8, 0);
     glScalef(1.5, 1.5, 1.5);
     rides->rollerCoaster(coasterHuman);
     glPopMatrix();
+    
 
     glPushMatrix();
     glTranslatef(-70, 15, 40);
     glScalef(1.5, 1.5, 1.5);
     rides->rideFence();
     glPopMatrix();
-
+    
     //Draw the around-the-world ride
     glPushMatrix();
     glTranslatef(-70, 0, -30);
@@ -451,7 +455,8 @@ void display(void)
     rides->carousel();
     glPopMatrix();
     glPopMatrix();
-
+    glPopMatrix();
+    
     glPushMatrix();
     glTranslatef(10,0,10);
     glScalef(10,10,10);
