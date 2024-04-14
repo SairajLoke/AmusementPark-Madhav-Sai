@@ -32,9 +32,9 @@ void drawBranch(float parentLength, float parentRadius, int depth, int branching
     float branchRadius = parentRadius * (depth) / (depth + 1);
     float branchLength = parentLength * (depth) / (depth + 1);
 
-    float phi = static_cast<float>(getRandomNumber() % 361 - 180);
+    float phi = static_cast<float>(rand() % 361 - 180);
 
-    float theta = static_cast<float>(getRandomNumber() % 121 - 60);
+    float theta = static_cast<float>(rand() % 121 - 60);
 
 
 

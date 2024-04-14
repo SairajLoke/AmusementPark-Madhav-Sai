@@ -361,7 +361,7 @@ void display(void)
     glRotatef(90,0,1,0);
     glScalef(7,7,7);
     
-    glTranslatef(-180,18,10);
+    glTranslatef(-194,18,10);
     //draw the swimming pool
     objects->drawPool();
     glPopMatrix();
