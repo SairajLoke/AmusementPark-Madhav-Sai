@@ -109,7 +109,7 @@ void Human::drawHuman()
         materialCurve(1, 0, 0);
         glPushMatrix();
         glTranslatef(6, 15, -4);
-        obj.balloon();
+        obj.balloon(0);
         glPopMatrix();
 
         //balloon rope

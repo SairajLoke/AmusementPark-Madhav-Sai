@@ -1,5 +1,326 @@
 #include "objects.h"
 
+//-------------------
+
+void Objects::shoot_arrow(){
+    
+
+    cout<<arrow_tip_z<<endl;
+    if (arrow_currently_shot == true)
+    {   
+        arrow_centre_z -= 0.5;
+        arrow_tip_z -= 0.5;
+
+        
+        if ( 0 >= arrow_tip_z ){ //arrow_tip_z is rel to shop
+            arrow_currently_shot = false;
+            cout<<"called reset0"<<endl;
+            resetArrow();
+        }
+        //     theta -= 360.0 * floor(theta / 360.0);
+
+        // rideTheta = ((rideTheta - 1)%360 + 360)%360;
+    }
+}
+void Objects::resetArrow(){
+    cout<<"reset called<<"<<endl;
+    arrow_centre_x = arrow_centre_x_init;
+    arrow_centre_y = arrow_centre_y_init;
+    arrow_centre_z = arrow_centre_z_init;
+    arrow_tip_z = arrow_centre_z_init-2;
+    arrow_tip_x = arrow_centre_x;
+    arrow_tip_y = arrow_centre_y;
+    // arrow_dir_x = 0; //check angle
+    // arrow_dir_y = 0; //
+    
+}
+
+bool Objects::check_bln_arrow_intersection(ShopBalloon& ball){
+    // if(ball.balloon_id == 5){cout<<"!!!!!"<<ball.x<<ball.y<<ball.z<<" | "<<arrow_tip_x<<" "<<arrow_tip_y<<endl;}
+    return arrow_tip_x >= (ball.x - ball_rad +0.5)  && arrow_tip_x <= (ball.x + ball_rad+2) && //shifting x compo of intersection as x of ball is end pt of balloon
+           arrow_tip_y >= (ball.y - ball_rad)  && arrow_tip_y <= (ball.y + ball_rad) &&
+           arrow_tip_z >= (ball.z -4 - ball_rad)  && arrow_tip_z <= (ball.z -4 + ball_rad) ;
+}
+
+void Objects::balloonUpdater(){
+
+    for(auto& ball : shopballoons ){
+        if(check_bln_arrow_intersection(ball) )
+        {
+            ball.ispresent = false;
+            cout<<"intersected"<<ball.balloon_id<<ball.x<<"/"<<ball.y<<"--|at---"<<arrow_tip_x<<","<<arrow_tip_y<<","<<arrow_tip_z;
+            // sleep(2);
+        }
+    }
+}
+
+void Objects::moveArrow(int key, int x, int y)
+{
+    double delta_x = 1, delta_y = 1;
+
+    switch (key)
+    {
+        case GLUT_KEY_UP:
+
+            //move the human forward in the direction which he is currently facing
+
+            arrow_tip_y += delta_y;
+            arrow_centre_y += delta_y;
+
+            if(arrow_centre_y> shop_height ) { //shop height , as arrow center y is rel to shooter_shop_y
+                arrow_centre_y = shooter_shop_y;
+                arrow_tip_y = shooter_shop_y;
+            }
+            break;
+
+
+            
+        case GLUT_KEY_DOWN:
+            //move the human backward
+         
+            arrow_tip_y -= delta_y;
+            arrow_centre_y -= delta_y;
+
+            if(arrow_centre_y< 0 ) { //arrow centre y is rel to shop
+                arrow_centre_y = shop_height;
+                arrow_tip_y = shop_height;
+            }
+            break;
+
+
+        case GLUT_KEY_LEFT:
+            //turn the human anti-clockwise
+            arrow_tip_x -= delta_x;
+            arrow_centre_x -= delta_x;
+
+            if(arrow_centre_x< 0) { ///arrow centre x is wrt shooter_shop_x
+                cout<<"shooter shop x"<<shooter_shop_x<<endl;
+                arrow_centre_x = shop_width;
+                arrow_tip_x = shop_width;
+            }
+            break;
+        case GLUT_KEY_RIGHT:
+            //turn the human clockwise
+            arrow_tip_x += delta_x;
+            arrow_centre_x += delta_x;
+
+            if(arrow_centre_x> shop_width ) {
+                arrow_centre_x = 0;
+                arrow_tip_x = 0;
+            }
+            break;
+    }
+}
+
+void Objects::draw_shop_balloons(vector<ShopBalloon>& shopballoons){
+    
+    // cout<<"size: "<<shopballoons.size()<<endl;
+    for(auto&bln : shopballoons){
+        cout<<"balloons: "<<bln.balloon_id<<" "<<bln.ispresent<<", "<<bln.x<<" "<<bln.y<<" "<<bln.z<<endl;
+        if(bln.ispresent){ balloon(0,bln.x,bln.y, bln.z);}
+    }
+    // cout<<endl<<endl;
+}
+void drawSolidCylinder(GLdouble radius, GLdouble height, GLint slices, GLint stacks) {
+    GLUquadricObj* quadric = gluNewQuadric();
+    gluQuadricDrawStyle(quadric, GLU_FILL);
+    gluCylinder(quadric, radius, radius, height, slices, stacks);
+    gluDeleteQuadric(quadric);
+}
+
+void Objects::drawArrow() {
+
+   
+    glEnable( GL_COLOR_MATERIAL ); //required for below glcolor cmd why?
+    glColor3f(1,0,1);
+    // Draw arrowhead (cone)
+    glColor3f(1.0, 0.0, 0.0); // Red color
+    glPushMatrix();
+    glTranslatef(arrow_centre_x, arrow_centre_y, arrow_centre_z); // Move to the tip of the arrow
+    glRotatef(-180.0, 1.0, 0.0, 0.0); 
+    glScalef(0.2,0.2,0.2);
+    glColor3f(1,0,0);
+    glutSolidCone(2, 5, 30, 30); // Parameters: base radius, height, slices, stacks
+    glPopMatrix();
+    
+    // Draw arrow shaft (cylinder)
+    glColor3f(1,0,1); // Blue color
+    glPushMatrix();
+    glTranslatef(arrow_centre_x, arrow_centre_y, arrow_centre_z+2); 
+    glRotatef(180.0, 1.0, 0.0, 0.0); // Rotate to make the cylinder stand up
+    glScalef(0.2,0.2,0.2);
+    glColor3f(1,0,0);
+    drawSolidCylinder(1, 10, 30, 30); // Parameters: radius, height, slices, stacks
+    glPopMatrix();
+
+
+    glDisable(GL_COLOR_MATERIAL);
+}
+
+void Objects::balloonShooterStall()
+{
+    float ytranslate = 0;
+
+    //function to draw a desert shop
+
+    materialProperty();
+    glEnable(GL_TEXTURE_2D);
+
+    glBindTexture(GL_TEXTURE_2D, ID2[25]); //
+    glPushMatrix();
+    quadricShape1();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0, ytranslate+11, -2);
+    glRotatef(90, 1, 0, 0);
+    glScalef(1, 1.5, 1);
+    quadricShape1();
+    glPopMatrix();
+
+    // glBindTexture(GL_TEXTURE_2D, ID2[17]);
+    glPushMatrix();
+    glTranslatef(0, ytranslate+0, -5);
+    glScalef(1, 2, 1);
+    quadricShape1();
+    glPopMatrix();
+
+    // glBindTexture(GL_TEXTURE_2D, ID2[18]);
+
+    glPushMatrix();
+    glTranslatef(0, ytranslate+3, -2);
+    glRotatef(90, 1, 0, 0);
+    quadricShape1();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10, ytranslate+ 0, -2);
+    quadricShape2();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0, 0, -2);
+    quadricShape2();
+    glPopMatrix();
+
+    //top bill board plane
+    glPushMatrix();
+        glTranslatef(0,shop_height, -1);
+        glScalef(1, 2, 1);
+        quadricShape1();
+    glPopMatrix();
+
+    
+    glDisable(GL_TEXTURE_2D); //if done below gives issue in text of balloons
+
+    draw_shop_balloons(shopballoons);
+    stroke_output(2, 12, 4, 0.01, 5, 0, "Balloon");
+	stroke_output(1, 10, 4, 0.01, 8, 0, "Shooting");
+
+    glPushMatrix();
+    // glTranslatef(->shooter_shop_y, objects->shooter_shop_z); //10 from ground wala
+    // glScalef(1, 2, 1);
+    drawArrow();
+    glPopMatrix();
+
+
+
+}
+
+void Objects::testvec(){
+    // glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // glClear(GL_COLOR_BUFFER_BIT);
+    //baskin and robins toward swiming pool :   pos x axis
+    //up :   pos y axis
+    //outward from baskin towards gate(open) : pos z axis
+
+
+    float zero = 0.0;   
+    // glColor3f(1.0,0.0,0.0);
+    // glBegin(GL_LINES);   // straight
+    // glVertex2f(100,zero);
+    // glVertex2f(zero,zero);
+    // glEnd();
+
+    
+    // glColor3f(0.0,1.0,0.0);
+    // glBegin(GL_LINES);   // straight
+    // glVertex2f(zero,100.0);
+    // glVertex2f(zero,zero);
+    // glEnd();
+
+
+    glColor3f(0.0,0.0,1.0);
+    glBegin(GL_LINES);   // straight
+    glVertex3f(zero,zero,100.0);
+    glVertex3f(zero,zero,zero);
+    glEnd();
+
+    float X1mark = 50.0;
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_LINES);   // 
+    glVertex3f(X1mark,0.0,zero);
+    glVertex3f(X1mark,50.0,zero);
+    glEnd();
+
+    float X2mark = 200.0;
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_LINES);   // 
+    glVertex3f(X2mark,0.0,zero);
+    glVertex3f(X2mark,50.0,zero);
+    glEnd();
+
+    // glFlush();
+}
+void Objects::balloon(int type, float x, float y, float z)
+{
+    if (type == 0){
+        //function to draw a balloon
+        glEnable( GL_COLOR_MATERIAL ); //required for below glcolor cmd why?
+        glColor3f(0,1,0);
+        // materialCurve(1, 0, 0);
+        glPushMatrix();
+        // glRotatef(90, 0, 0, 1);
+        glTranslatef(x,y,z);
+        glScalef(1, 1, 2);
+        balloonBezier();
+        glPopMatrix();
+        glDisable(GL_COLOR_MATERIAL);
+    }
+    else{
+        //function to draw a balloon
+        glPushMatrix();
+        glRotatef(90, 0, 0, 1);
+        glScalef(2, 2.5, 2);
+        balloonBezier();
+        glPopMatrix();
+    }   
+    
+}
+
+void Objects::balloon(int type)
+{
+    if (type == 0){
+        //function to draw a balloon
+        glPushMatrix();
+        glRotatef(90, 0, 0, 1);
+        glScalef(1, 1, 1);
+        balloonBezier();
+        glPopMatrix();
+    }
+    else{
+        //function to draw a balloon
+        glPushMatrix();
+        glRotatef(90, 0, 0, 1);
+        glScalef(2, 2.5, 2);
+        balloonBezier();
+        glPopMatrix();
+    }   
+    
+}
+
+//------------------
+
 void Objects::drawPool()
 {
     //function to draw a swimming pool
@@ -647,10 +968,15 @@ void Objects::cafeteria()
     pizzaShop();
     glPopMatrix();
 
+    // glPushMatrix();
+    // glTranslatef(-12, -18, -25);
+    // glScalef(1.5, 2, 1);
+    // desertShop();
+    // glPopMatrix();
     glPushMatrix();
     glTranslatef(-12, -18, -25);
-    glScalef(1.5, 2, 1);
-    desertShop();
+    glScalef(1, 1, 1); //this scale was messing up with my calcs for balloon popping wth!
+    balloonShooterStall();
     glPopMatrix();
 
     glPushMatrix();
@@ -1148,15 +1474,15 @@ void Objects::drawFlag()
     }
 }
 
-void Objects::balloon()
-{
-    //function to draw a balloon
-    glPushMatrix();
-    glRotatef(90, 0, 0, 1);
-    glScalef(2, 2.5, 2);
-    balloonBezier();
-    glPopMatrix();
-}
+// void Objects::balloon()
+// {
+//     //function to draw a balloon
+//     glPushMatrix();
+//     glRotatef(90, 0, 0, 1);
+//     glScalef(2, 2.5, 2);
+//     balloonBezier();
+//     glPopMatrix();
+// }
 
 void Objects::balloonLine()
 {

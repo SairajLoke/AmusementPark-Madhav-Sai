@@ -1,5 +1,25 @@
 #include "shapes.h"
 
+// prints text
+// ref. https://www.opengl.org/archives/resources/code/samples/glut_examples/examples/fontdemo.c
+// prints the string with a translation (x, y, z), scaling factor s and rotation of rotate degrees along y axis
+// pointsize define the width of the line and point, to give a effect of bold
+void stroke_output(GLfloat x, GLfloat y, GLfloat z, GLfloat s, GLfloat pointsize, GLfloat rotate, string str_input){
+	va_list args;
+	string buffer = str_input;
+	glPushMatrix();
+        glTranslatef(x, y, z);
+        glPointSize(pointsize);
+        glLineWidth(pointsize);
+        glRotatef(rotate, 0.0, 1.0, 0.0);
+        glScalef(s, s, s);
+        for (auto p: buffer)
+            glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, p);
+	glPopMatrix();
+}
+
+
+
 static GLfloat cubeVertices[8][3] =
     {
         {0.0, 0.0, 0.0}, // 0

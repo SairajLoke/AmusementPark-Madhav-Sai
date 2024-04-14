@@ -9,5 +9,6 @@
 #include "src/objects/objects.h"
 #include "src/rides/rides.h"
 #include "src/shapes/shapes.h"
+#include "src/configs.h"
 
 #endif

@@ -66,6 +66,7 @@ Human* human2 = new Human(false,100, -40, 100);
 
 Rides* rides = new Rides();
 Objects* objects = new Objects();
+// static LightObject sun {"SUN"};
 
 struct Camera {
     
@@ -86,7 +87,7 @@ struct Camera {
 
         currView = view;
 
-        if(view == 0) {
+        if(view == WORLD_VIEW) {
             //world view
             eyeX = -10;
             eyeY = 5.0;
@@ -96,7 +97,7 @@ struct Camera {
             refZ = 0;  
         }
 
-        else if(view == 1) {
+        else if(view == HUMAN_VIEW) {
             //human view
             eyeX = human->human_x - 15*cos(degToRad(human->angle_x));
             eyeY = -5;
@@ -105,7 +106,7 @@ struct Camera {
             refY = -10;
             refZ = human->human_z - 15*sin(degToRad(human->angle_x));
         }
-        else if(view == 2) {
+        else if(view == ROLLER_COASTER_VIEW) {
 
             // ride view
             vector<double> viewRef = rides->getRollerCoasterViewRef();
@@ -118,7 +119,55 @@ struct Camera {
             refZ = viewRef[5];
 
         }
+        else if(view = BALLOON_SHOOTER_VIEW){
+            // vector<double> viewRef = objects->getBalloonShooterViewRef();
+            //human view
+            eyeX = objects->shooter_shop_x+9.5;//- 15*cos(degToRad(objects->shooting_angle_x));
+            eyeY = objects->shooter_shop_y+13.5; //location
+            eyeZ = 3 ;//+ 15*sin(degToRad(objects->shooting_angle_x));
+            refX = objects->shooter_shop_x+9.5;//objects->shooter_shop_x+ 15*cos(degToRad(objects->shooting_angle_x)); //angle x is 15
+            refY = objects->shooter_shop_y+13.5; //to look towards
+            refZ = -8;//objects->shooter_shop_z+5- 15*sin(degToRad(objects->shooting_angle_x));
+        }
+        
     }
+    // void setView(int view) {
+
+    //     currView = view;
+
+    //     if(view == 0) {
+    //         //world view
+    //         eyeX = -10;
+    //         eyeY = 5.0;
+    //         eyeZ = 100;
+    //         refX = 0;
+    //         refY = 0;
+    //         refZ = 0;  
+    //     }
+
+    //     else if(view == 1) {
+    //         //human view
+    //         eyeX = human->human_x - 15*cos(degToRad(human->angle_x));
+    //         eyeY = -5;
+    //         eyeZ = human->human_z + 15*sin(degToRad(human->angle_x));
+    //         refX = human->human_x + 15*cos(degToRad(human->angle_x));
+    //         refY = -10;
+    //         refZ = human->human_z - 15*sin(degToRad(human->angle_x));
+    //     }
+    //     else if(view == 2) {
+
+    //         // ride view
+    //         vector<double> viewRef = rides->getRollerCoasterViewRef();
+
+    //         eyeX = viewRef[0];
+    //         eyeY = viewRef[1];
+    //         eyeZ = viewRef[2];
+    //         refX = viewRef[3];
+    //         refY = viewRef[4];
+    //         refZ = viewRef[5];
+
+    //     }
+    // }
 };
 
 Camera* camera = new Camera();
@@ -265,6 +314,10 @@ void display(void)
     objects->scaryHouse();
     glPopMatrix();
 
+    glPushMatrix();
+        objects->testvec();
+    glPopMatrix();
+
     Human* coasterHuman = NULL;
 
     if(!human->sittingRollerCoaster) {
@@ -375,8 +428,39 @@ void myKeyboardFunc(unsigned char key, int x, int y)
         break;
     case 'e':
         human->sittingRollerCoaster = false; //exit roller coaster
+        objects->shooting_mode = false;
         camera->setView(1);
         break;
+    case 'b':
+        if (!objects->shooting_mode){
+            human->sittingRollerCoaster = false; //exit roller coaster
+            camera->setView(BALLOON_SHOOTER_VIEW);
+            objects->shooting_mode = true;
+            cout<<"Swapped shooting mode on"<<objects->shooting_mode;
+
+        }
+        else{
+            human->sittingRollerCoaster = false; //exit roller coaster
+            camera->setView(HUMAN_VIEW);
+            objects->shooting_mode = false;
+            cout<<"Swapped shooting mode off"<<objects->shooting_mode;
+        }
+        
+        break;
+    case 'v':
+        if (objects->arrow_currently_shot == false)
+        {
+            cout<<"Shot an arrow"<<endl;
+            objects->arrow_currently_shot = true;
+            break;
+        }
+        else
+        {
+            objects->arrow_currently_shot = false;
+            break;
+        }
+        break;
+
     case 'r':
         camera->setView(0); //reset view reference
         break;
@@ -540,6 +624,12 @@ void animate()
     //animate all the motions 
     rides->animateRides(aroundTheWorldFlag, rideFlag, carouselFlag, doorFlag);
     objects->animateFlag();
+    // sun.animateLightObject();
+    // sun.renderLightObject();
+
+    objects->shoot_arrow();
+    objects->balloonUpdater();
+
     glutPostRedisplay();
 }
 
