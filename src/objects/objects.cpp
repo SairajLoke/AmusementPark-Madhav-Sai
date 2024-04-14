@@ -5,7 +5,7 @@
 void Objects::shoot_arrow(){
     
 
-    cout<<arrow_tip_z<<endl;
+    // cout<<arrow_tip_z<<endl;
     if (arrow_currently_shot == true)
     {   
         arrow_centre_z -= 0.5;
@@ -14,7 +14,7 @@ void Objects::shoot_arrow(){
         
         if ( 0 >= arrow_tip_z ){ //arrow_tip_z is rel to shop
             arrow_currently_shot = false;
-            cout<<"called reset0"<<endl;
+            // cout<<"called reset0"<<endl;
             resetArrow();
         }
         //     theta -= 360.0 * floor(theta / 360.0);
@@ -23,7 +23,7 @@ void Objects::shoot_arrow(){
     }
 }
 void Objects::resetArrow(){
-    cout<<"reset called<<"<<endl;
+    // cout<<"reset called<<"<<endl;
     arrow_centre_x = arrow_centre_x_init;
     arrow_centre_y = arrow_centre_y_init;
     arrow_centre_z = arrow_centre_z_init;
@@ -94,7 +94,7 @@ void Objects::moveArrow(int key, int x, int y)
             arrow_centre_x -= delta_x;
 
             if(arrow_centre_x< 0) { ///arrow centre x is wrt shooter_shop_x
-                cout<<"shooter shop x"<<shooter_shop_x<<endl;
+                // cout<<"shooter shop x"<<shooter_shop_x<<endl;
                 arrow_centre_x = shop_width;
                 arrow_tip_x = shop_width;
             }
@@ -116,7 +116,7 @@ void Objects::draw_shop_balloons(vector<ShopBalloon>& shopballoons){
     
     // cout<<"size: "<<shopballoons.size()<<endl;
     for(auto&bln : shopballoons){
-        cout<<"balloons: "<<bln.balloon_id<<" "<<bln.ispresent<<", "<<bln.x<<" "<<bln.y<<" "<<bln.z<<endl;
+        // cout<<"balloons: "<<bln.balloon_id<<" "<<bln.ispresent<<", "<<bln.x<<" "<<bln.y<<" "<<bln.z<<endl;
         if(bln.ispresent){ balloon(0,bln.x,bln.y, bln.z);}
     }
     // cout<<endl<<endl;
