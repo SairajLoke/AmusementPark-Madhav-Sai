@@ -47,7 +47,7 @@ void human3D() {
     glPushMatrix();
     glColor3ub(255, 210, 150);
     glTranslatef(-0.05f, 0.0f, 1.0f); // Translate to other arm position
-    glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
+    glRotatef(-90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
     gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
     glPopMatrix();
 
