@@ -325,7 +325,7 @@ void Objects::drawPool()
 {
     //function to draw a swimming pool
 
-    int tx = -115, ty = 5, tz = 15;
+    int tx = -0, ty = 0, tz = 0;
 
     // right side
     glEnable(GL_TEXTURE_2D);

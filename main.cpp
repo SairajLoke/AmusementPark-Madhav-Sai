@@ -358,8 +358,10 @@ void display(void)
     glPopMatrix();
     
     glPushMatrix();
-    glScalef(3,3,3);
-    glTranslatef(0,10,0);
+    glRotatef(90,0,1,0);
+    glScalef(7,7,7);
+    
+    glTranslatef(-180,18,10);
     //draw the swimming pool
     objects->drawPool();
     glPopMatrix();
@@ -401,6 +403,44 @@ void display(void)
 
     glPushMatrix();
     glTranslatef(0,0,-250);
+    glScalef(2,2,2);
+   
+    glPushMatrix();
+    glTranslatef(-25, 0, 0);
+    objects->lampPost1();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(50, 0, 0);
+    objects->lampPost2();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(50, 0, 30);
+    objects->lampPost3();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-25, 0, 30);
+    objects->lampPost4();
+    glPopMatrix();
+
+    //draw the cafeteria
+    // glPushMatrix();
+    // glRotatef(-180,0,1,0);
+    glPushMatrix();
+    glTranslatef(0, 10, 10);
+    objects->cafeteria();
+    // glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
+
+
+
+
+
+        glPushMatrix();
+    glTranslatef(-200,0,-250);
     glScalef(2,2,2);
    
     glPushMatrix();
