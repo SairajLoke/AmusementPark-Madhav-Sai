@@ -190,7 +190,7 @@ void display(void)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45, 2, 1, 500);
+    gluPerspective(60, 2, 1, 1000);
     
     //set the view reference
     glMatrixMode(GL_MODELVIEW);
@@ -204,7 +204,7 @@ void display(void)
 
     //draw the sky
     glPushMatrix();
-    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 250, 250, 250);
+    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 800, 800, 800);
     glPopMatrix();
     //draw the four lamp posts
     // glPushMatrix();
@@ -561,7 +561,7 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
-    glutInitWindowSize(800, 600);
+    glutInitWindowSize(1200, 900);
     glutCreateWindow("Imagica Amusement Park");
     glShadeModel(GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);

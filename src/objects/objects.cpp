@@ -245,6 +245,13 @@ void Objects::DrawUmbrella(void)
 
 void Objects::DrawTree(void)
 {
+    // GLfloat no_mat[] = {0.4, 0.3, 0.2, 1.0};
+    // GLfloat mat_ambient[] = {0.5, 0.2, 0.6, 1.0};
+    GLfloat mat_ambient_color[] = {0.0, 0.0, 1.0, 0.0};
+    // GLfloat mat_diffuse[] = {1.000, 0.443, 0.100, 1.0};
+    GLfloat high_shininess[] = {100.0};
+    // GLfloat mat_emission[] = {1, 1, 1, 1.0};
+    
     // Draw trunk
     glColor4ub(139, 69, 19, 255); // Brown color
     glPushMatrix();
@@ -266,6 +273,10 @@ void Objects::DrawTree(void)
     // Draw leaves
     glColor4ub(34, 139, 34, 255); // Dark Green color
     glPushMatrix();
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+    // glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    // glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
     glTranslatef(0, 10,0); // Move to the top of the trunk
     glRotatef(-90, 1, 0, 0); // Rotate to be perpendicular to the trunk
     glutSolidSphere(5, 20, 20); // Draw a sphere as the leaves
@@ -556,7 +567,10 @@ void Objects::scaryHouse()
 
     materialProperty();
     glEnable(GL_TEXTURE_2D);
-
+    glPushMatrix();
+    glTranslatef(70,0,50);
+    glScalef(2, 2, 2);
+    glRotatef(-90,0,1,0);
     // Front
     glBindTexture(GL_TEXTURE_2D, ID2[34]);
     glPushMatrix();
@@ -595,7 +609,7 @@ void Objects::scaryHouse()
     quadricShape2();
     glPopMatrix();
 
-
+    glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
 
@@ -1186,9 +1200,9 @@ void Objects::flagpole(int seed)
 
     srand(seed);
 
-    float r1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-    float r2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-    float r3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    float r1 = float(rand()) / float(RAND_MAX);
+    float r2 = float(rand()) / float(RAND_MAX);
+    float r3 = float(rand()) / float(RAND_MAX);
 
     materialCurve(r1, r2, r3);
     drawFlag();
