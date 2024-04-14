@@ -688,6 +688,10 @@ void myKeyboardFunc(unsigned char key, int x, int y)
             intensity = 0.0;
             break;
         }
+    case 'o':
+        objects->activate_sun = !objects->activate_sun;
+        break;
+        
     case 27:
         exit(1);
     }
@@ -711,8 +715,10 @@ void animate()
     //animate all the motions 
     rides->animateRides(aroundTheWorldFlag, rideFlag, carouselFlag, doorFlag);
     objects->animateFlag();
-    sun.animateLightObject();
-    sun.renderLightObject(objects);
+    if(objects->activate_sun){
+        sun.animateLightObject();
+        sun.renderLightObject(objects);
+    }
 
     objects->shoot_arrow();
     objects->balloonUpdater();

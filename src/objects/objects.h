@@ -63,7 +63,7 @@ struct Objects {
     float arrow_dir_x = arrow_dir_x_init ; //check angle
     float arrow_dir_y = arrow_dir_y_init; //
     
-
+    GLboolean activate_sun = false;
 
     GLboolean switchOne;
     GLboolean switchTwo;
