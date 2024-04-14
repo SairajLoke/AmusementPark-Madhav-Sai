@@ -11,6 +11,75 @@ static int rotateX = 0;
 static int rotateY = 0;
 double zoom = 1.0;
 
+
+#include <GL/glut.h>
+
+void human3D() {
+    // Assuming a simple standing human figure, we can extrude the 2D shapes into 3D objects.
+    // We'll use basic geometric shapes like cylinders and spheres for limbs and torso, respectively.
+    // Assume the human is standing upright along the z-axis.
+
+    // Body Torso (Sphere)
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.0f, 0.0f, 1.0f); // Translate to a position in 3D space
+    glutSolidSphere(0.08f, 100, 100); // Representing the slightly smaller torso as a sphere
+    glPopMatrix();
+
+    // Head (Sphere)
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.0f, 0.11f, 1.0f); // Translate to head position
+    glutSolidSphere(0.03f, 100, 100); // Representing the head as a smaller sphere
+    glPopMatrix();
+
+    // Limbs (Cylinders)
+    GLUquadricObj *quadratic;
+    quadratic = gluNewQuadric();
+
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.05f, 0.0f, 1.0f); // Translate to arm position
+    glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
+    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(-0.05f, 0.0f, 1.0f); // Translate to other arm position
+    glRotatef(-90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
+    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    glPopMatrix();
+
+    // // Additional arms
+    // glPushMatrix();
+    // glColor3ub(255, 210, 150);
+    // glTranslatef(0.05f, 0.0f, 1.0f); // Translate to additional arm position
+    // glRotatef(180.0f, 0.0f, 1.0f, 0.0f); // Rotate the additional arm to stand vertically
+    // gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing additional arm as a cylinder
+    // glPopMatrix();
+
+    // Legs
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.025f, -0.1f, 1.0f); // Translate to leg position
+    glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the leg to stand vertically
+    gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing legs as cylinders
+    glPopMatrix();
+
+    // Additional leg
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(-0.025f, -0.1f, 1.0f); // Translate to additional leg position
+    glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the additional leg to stand vertically
+    gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing additional leg as a cylinder
+    glPopMatrix();
+
+    gluDeleteQuadric(quadratic);
+}
+
+
+
 // void mouse(int button, int state, int x, int y) {
 //     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 //         lastX = x;
@@ -239,7 +308,7 @@ void display(void)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45, 2, 1, 500);
+    gluPerspective(60, 2, 1, 1000);
     
     //set the view reference
     glMatrixMode(GL_MODELVIEW);
@@ -253,7 +322,7 @@ void display(void)
 
     //draw the sky
     glPushMatrix();
-    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 250, 250, 250);
+    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 800, 800, 800);
     glPopMatrix();
     //draw the four lamp posts
     // glPushMatrix();
@@ -374,6 +443,12 @@ void display(void)
     glTranslatef(70,10,-60);
     rides->carousel();
     glPopMatrix();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10,-2,10);
+    glScalef(10,10,10);
+    human3D();
     glPopMatrix();
     // glPopMatrix(); just trying
     double test_theta = -45;
@@ -651,7 +726,7 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
-    glutInitWindowSize(800, 600);
+    glutInitWindowSize(1200, 900);
     glutCreateWindow("Imagica Amusement Park");
     glShadeModel(GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);
