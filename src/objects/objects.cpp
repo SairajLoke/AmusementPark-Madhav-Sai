@@ -1549,7 +1549,7 @@ void Objects::flags()
     for (float i = -60; i <= 80; i += 15)
     {
         glPushMatrix();
-        glTranslatef(120, -2, i);
+        glTranslatef(150, -2, i);
         flagpole(i);
         glPopMatrix();
     }

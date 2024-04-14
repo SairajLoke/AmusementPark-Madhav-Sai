@@ -343,20 +343,31 @@ void display(void)
 
     glPushMatrix();
     glScalef(0.3,0.3,0.3);
+    
     //generate the circular, sandy ground
     ground();
     
     //draw the boundary wall
     objects->walls();
-    
+    glPushMatrix();
+    glScalef(2.5,2.5,2.5);
+    glRotatef(90,0,1,0);
+    // glTranslatef(0,10,0);
     //draw the boundary flags
     objects->flags();
+    glPopMatrix();
     
+    glPushMatrix();
+    glScalef(3,3,3);
+    glTranslatef(0,10,0);
     //draw the swimming pool
     objects->drawPool();
+    glPopMatrix();
 
-
-
+    glPushMatrix();
+    glTranslatef(0,0,180);
+    glScalef(2,2,2);
+   
     glPushMatrix();
     glTranslatef(-25, 0, 0);
     objects->lampPost1();
@@ -379,10 +390,48 @@ void display(void)
 
     //draw the cafeteria
     glPushMatrix();
-    glTranslatef(0, 0, 10);
+    glRotatef(-180,0,1,0);
+    glPushMatrix();
+    glTranslatef(0, 10, 10);
     objects->cafeteria();
     glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
 
+
+    glPushMatrix();
+    glTranslatef(0,0,-250);
+    glScalef(2,2,2);
+   
+    glPushMatrix();
+    glTranslatef(-25, 0, 0);
+    objects->lampPost1();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(50, 0, 0);
+    objects->lampPost2();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(50, 0, 30);
+    objects->lampPost3();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-25, 0, 30);
+    objects->lampPost4();
+    glPopMatrix();
+
+    //draw the cafeteria
+    // glPushMatrix();
+    // glRotatef(-180,0,1,0);
+    glPushMatrix();
+    glTranslatef(0, 10, 10);
+    objects->cafeteria();
+    // glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
     //draw the scary house
     glPushMatrix();
     glTranslatef(5,-18,-60);
@@ -390,9 +439,9 @@ void display(void)
     objects->scaryHouse();
     glPopMatrix();
 
-    glPushMatrix();
-        objects->testvec();
-    glPopMatrix();
+    // glPushMatrix();
+    //     objects->testvec();
+    // glPopMatrix();
 
     Human* coasterHuman = NULL;
 
@@ -451,12 +500,12 @@ void display(void)
 
     //draw the carousel ride
     glPushMatrix();
-    glTranslatef(70,10,-60);
+    glTranslatef(180,10,-180);
     rides->carousel();
     glPopMatrix();
     glPopMatrix();
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslatef(10,0,10);
     glScalef(10,10,10);
