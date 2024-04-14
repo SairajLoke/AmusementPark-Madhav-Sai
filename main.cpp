@@ -11,6 +11,55 @@ static int rotateX = 0;
 static int rotateY = 0;
 double zoom = 1.0;
 
+
+void human3D() {
+    // Assuming a simple standing human figure, we can extrude the 2D shapes into 3D objects.
+    // We'll use basic geometric shapes like cylinders and spheres for limbs and torso, respectively.
+    // Assume the human is standing upright along the z-axis.
+
+    // Body Torso (Sphere)
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.0f, 0.0f, 1.0f); // Translate to a position in 3D space
+    glutSolidSphere(0.1f, 100, 100); // Representing the torso as a sphere
+    glPopMatrix();
+
+    // Head (Sphere)
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.0f, 0.15f, 1.0f); // Translate to head position
+    glutSolidSphere(0.03f, 100, 100); // Representing the head as a smaller sphere
+    glPopMatrix();
+
+    // Limbs (Cylinders)
+    GLUquadricObj *quadratic;
+    quadratic = gluNewQuadric();
+
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.05f, 0.0f, 1.0f); // Translate to arm position
+    glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
+    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(-0.05f, 0.0f, 1.0f); // Translate to other arm position
+    glRotatef(90.0f, 0.0f, 1.0f, 0.0f); // Rotate the arm to stand vertically
+    gluCylinder(quadratic, 0.01f, 0.01f, 0.15f, 100, 100); // Representing arms as cylinders
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3ub(255, 210, 150);
+    glTranslatef(0.025f, -0.1f, 1.0f); // Translate to leg position
+    glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the leg to stand vertically
+    gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing legs as cylinders
+    glPopMatrix();
+
+    gluDeleteQuadric(quadratic);
+}
+
+
 // void mouse(int button, int state, int x, int y) {
 //     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 //         lastX = x;
@@ -321,6 +370,12 @@ void display(void)
     glTranslatef(70,10,-60);
     rides->carousel();
     glPopMatrix();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10,-2,10);
+    glScalef(10,10,10);
+    human3D();
     glPopMatrix();
     // glPopMatrix(); just trying
     double test_theta = -45;
