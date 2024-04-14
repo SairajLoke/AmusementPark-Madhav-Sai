@@ -62,7 +62,7 @@ void human3D() {
     // Legs
     glPushMatrix();
     glColor3ub(255, 210, 150);
-    glTranslatef(0.025f, -0.1f, 1.0f); // Translate to leg position
+    glTranslatef(0.025f, -0.08f, 1.0f); // Translate to leg position
     glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the leg to stand vertically
     gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing legs as cylinders
     glPopMatrix();
@@ -70,7 +70,7 @@ void human3D() {
     // Additional leg
     glPushMatrix();
     glColor3ub(255, 210, 150);
-    glTranslatef(-0.025f, -0.1f, 1.0f); // Translate to additional leg position
+    glTranslatef(-0.025f, -0.08f, 1.0f); // Translate to additional leg position
     glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // Rotate the additional leg to stand vertically
     gluCylinder(quadratic, 0.015f, 0.015f, 0.2f, 100, 100); // Representing additional leg as a cylinder
     glPopMatrix();
