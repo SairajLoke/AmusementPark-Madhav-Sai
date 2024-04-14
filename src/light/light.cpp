@@ -2,12 +2,32 @@
 
 
 //sun ---------------------
-void LightObject::renderLightObject()//vector<float> sun_pos
+void LightObject::renderLightObject(Objects* objects)//vector<float> sun_pos
 {
+    
     glPushMatrix();
-    if( LIGHT_OBJ_ANGLE <=180 ){ glEnable(GL_LIGHT5);} //daytime
-    else{glDisable(GL_LIGHT5);
+    if( LIGHT_OBJ_ANGLE <=180 ){ 
+            glEnable(GL_LIGHT5);
+            objects->switchOne = false;
+            objects->switchTwo = false;
+            objects->switchThree = false;
+            objects->switchFour = false;
+            glDisable(GL_LIGHT1);
+            glDisable(GL_LIGHT2);
+            glDisable(GL_LIGHT3);
+            glDisable(GL_LIGHT4);
+    } //daytime
+    else{
+            objects->switchOne = true;
+            objects->switchTwo = true;
+            objects->switchThree = true;
+            objects->switchFour = true;
+            glDisable(GL_LIGHT5);
+            glEnable(GL_LIGHT1);
+            glEnable(GL_LIGHT2);
             glEnable(GL_LIGHT3);
+            glEnable(GL_LIGHT4);
+
     }  //night time
 
     // glLightfv(GL_LIGHT5, GL_AMBIENT, light_ambient);

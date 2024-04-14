@@ -3,6 +3,7 @@
 
 #include "../../libs.h"
 #include "../utils/utils.h"
+#include "../objects/objects.h"
 
 class LightObject{
 //can be Sun , Moon
@@ -25,7 +26,7 @@ public:
 
 
     LightObject(string name): name(name){}
-    void renderLightObject();
+    void renderLightObject(Objects*);
     void animateLightObject();
     void drawLightObjectRepresentative(std::vector<float>& , std::vector<unsigned int>& , float , int, int );
 private:

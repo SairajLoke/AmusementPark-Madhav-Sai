@@ -335,7 +335,7 @@ void display(void)
     // spotLight2();
     // spotLight3();
     // spotLight4();
-    
+
     glPushMatrix();
     glScalef(0.3,0.3,0.3);
     //generate the circular, sandy ground
@@ -702,7 +702,7 @@ void animate()
     rides->animateRides(aroundTheWorldFlag, rideFlag, carouselFlag, doorFlag);
     objects->animateFlag();
     sun.animateLightObject();
-    sun.renderLightObject();
+    sun.renderLightObject(objects);
 
     objects->shoot_arrow();
     objects->balloonUpdater();
