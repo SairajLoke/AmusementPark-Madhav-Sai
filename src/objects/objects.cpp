@@ -1201,7 +1201,7 @@ void Objects::lampPost1()
     glMaterialfv(GL_FRONT, GL_AMBIENT, no_mat);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
-    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+    // glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
     if (switchOne == true)
     {
         glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
