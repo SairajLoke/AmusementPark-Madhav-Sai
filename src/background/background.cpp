@@ -5,6 +5,9 @@ void ground()
     // Set the number of segments in the circle
     int numSegments = 10000;
 
+    // Apply any material properties you need
+    materialProperty();
+
     // Enable texturing
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, ID2[14]);
@@ -12,8 +15,7 @@ void ground()
     // Push the current transformation matrix onto the stack
     glPushMatrix();
 
-    // Apply any material properties you need
-    materialProperty();
+    
 
     // Begin drawing the circle
     glBegin(GL_TRIANGLE_FAN);
@@ -52,7 +54,7 @@ void ground()
     glDisable(GL_TEXTURE_2D);
 }
 
-void sky(float x, float y, float z, float width, float height, float length)
+void sky(float x, float y, float z, float width, float height, float length, GLboolean isday)
 {
     //function to draw the sky
     
@@ -62,16 +64,14 @@ void sky(float x, float y, float z, float width, float height, float length)
     y = y - height / 2;
     z = z - length / 2;
 
-    GLboolean day = true;
-
     glEnable(GL_TEXTURE_2D);
-    if (day == true)
+    if (isday)
     {
         glBindTexture(GL_TEXTURE_2D, ID2[8]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[28]);
+        glBindTexture(GL_TEXTURE_2D, ID2[12]);
     }
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
@@ -84,7 +84,7 @@ void sky(float x, float y, float z, float width, float height, float length)
     glVertex3f(x + width, y + height, z);
     glEnd();
 
-    if (day == true)
+    if (isday)
     {
         glBindTexture(GL_TEXTURE_2D, ID2[27]);
     }
@@ -103,7 +103,7 @@ void sky(float x, float y, float z, float width, float height, float length)
     glVertex3f(x, y + height, z);
     glEnd();
 
-    if (day == true)
+    if (isday == true)
     {
         glBindTexture(GL_TEXTURE_2D, ID2[9]);
     }
@@ -122,7 +122,7 @@ void sky(float x, float y, float z, float width, float height, float length)
     glVertex3f(x, y, z);
     glEnd();
 
-    if (day == true)
+    if (isday == true)
     {
         glBindTexture(GL_TEXTURE_2D, ID2[10]);
     }
@@ -141,7 +141,7 @@ void sky(float x, float y, float z, float width, float height, float length)
     glVertex3f(x, y, z);
     glEnd();
 
-    if (day == true)
+    if (isday == true)
     {
         glBindTexture(GL_TEXTURE_2D, ID2[11]);
     }
