@@ -785,7 +785,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
     case 'o':
         objects->activate_sun = !objects->activate_sun;
         break;
-    case 'n':
+    case 'd':
         LoadTexture("sgi_images/scorchsky.sgi", 9);
         LoadTexture("sgi_images/scorchsky.sgi", 12);
         LoadTexture("sgi_images/scorchsky.sgi", 11);
@@ -793,7 +793,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
         LoadTexture("sgi_images/scorchsky.sgi", 28);
         LoadTexture("sgi_images/scorchsky.sgi", 29);
         break;
-    case 'd':
+    case 'n':
         LoadTexture("sgi_images/nightsky.sgi", 9);
         LoadTexture("sgi_images/nightsky.sgi", 12);
         LoadTexture("sgi_images/nightsky.sgi", 11);
