@@ -12,6 +12,12 @@ void LightObject::renderLightObject(Objects* objects)//vector<float> sun_pos
             objects->switchTwo = false;
             objects->switchThree = false;
             objects->switchFour = false;
+            LoadTexture("sgi_images/scorchsky.sgi", 9);
+            LoadTexture("sgi_images/scorchsky.sgi", 12);
+            LoadTexture("sgi_images/scorchsky.sgi", 11);
+            LoadTexture("sgi_images/scorchsky.sgi", 10);
+            LoadTexture("sgi_images/scorchsky.sgi", 28);
+            LoadTexture("sgi_images/scorchsky.sgi", 29);
             glDisable(GL_LIGHT1);
             glDisable(GL_LIGHT2);
             glDisable(GL_LIGHT3);
@@ -23,6 +29,12 @@ void LightObject::renderLightObject(Objects* objects)//vector<float> sun_pos
             objects->switchTwo = true;
             objects->switchThree = true;
             objects->switchFour = true;
+            LoadTexture("sgi_images/nightsky.sgi", 9);
+            LoadTexture("sgi_images/nightsky.sgi", 12);
+            LoadTexture("sgi_images/nightsky.sgi", 11);
+            LoadTexture("sgi_images/nightsky.sgi", 10);
+            LoadTexture("sgi_images/nightsky.sgi", 28);
+            LoadTexture("sgi_images/nightsky.sgi", 29);
             glDisable(GL_LIGHT5);
             glEnable(GL_LIGHT1);
             glEnable(GL_LIGHT2);
