@@ -557,6 +557,7 @@ void display(void)
     glPopMatrix();
     glPushMatrix();
     glScalef(0.3,0.3,0.3);
+    glTranslatef(250,-25,220);
     drawTree(1,4);
     glPopMatrix();
 
