@@ -12,9 +12,12 @@ void stroke_output(GLfloat x, GLfloat y, GLfloat z, GLfloat s, GLfloat pointsize
         glPointSize(pointsize);
         glLineWidth(pointsize);
         glRotatef(rotate, 0.0, 1.0, 0.0);
+        glEnable( GL_COLOR_MATERIAL ); //required for below glcolor cmd why?
+        glColor3f(1,0,0);
         glScalef(s, s, s);
         for (auto p: buffer)
             glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, p);
+        glDisable(GL_COLOR_MATERIAL);
 	glPopMatrix();
 }
 

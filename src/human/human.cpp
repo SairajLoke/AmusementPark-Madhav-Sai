@@ -36,7 +36,11 @@ void Human::drawHuman()
     glRotatef(90,0,0,1);
     glRotatef(90,0,1,0);
     glScalef(1.5, 1.5, 1);
+
+    glEnable( GL_COLOR_MATERIAL ); //required for below glcolor cmd why?
+    glColor3f(1,1,0);
     cylindricalShapeBodyPart();
+    glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
 
     
@@ -72,7 +76,10 @@ void Human::drawHuman()
         glRotatef(hand_angle_1, 1, 0, 0);        // rotate w.r.t x axis to simulate hand movement
         glScalef(0.8, 0.8, 2);                 // scaling
         glTranslatef(-3, -3, -3);                // take top right corner of box to origin
+        glEnable( GL_COLOR_MATERIAL ); //required for below glcolor cmd why?
+        glColor3f(1,1,0);
         cubicalShapeBodyPart();
+        glDisable(GL_COLOR_MATERIAL);
         glPopMatrix();
 
         // hand2

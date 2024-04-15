@@ -136,11 +136,8 @@ float intensity = 0;
 
 Human* human = new Human();
 Human* human2 = new Human(false,100, -40, 100);
-// human2->drawHuman();
-
 Rides* rides = new Rides();
 Objects* objects = new Objects();
-// static LightObject sun {"SUN"};
 
 struct Camera {
     
@@ -174,10 +171,10 @@ struct Camera {
         else if(view == HUMAN_VIEW) {
             //human view
             eyeX = human->human_x - 15*cos(degToRad(human->angle_x));
-            eyeY = -5;
+            eyeY = 0;
             eyeZ = human->human_z + 15*sin(degToRad(human->angle_x));
             refX = human->human_x + 15*cos(degToRad(human->angle_x));
-            refY = -10;
+            refY = 0;
             refZ = human->human_z - 15*sin(degToRad(human->angle_x));
         }
         else if(view == ROLLER_COASTER_VIEW) {
@@ -196,10 +193,10 @@ struct Camera {
         else if(view = BALLOON_SHOOTER_VIEW){
             // vector<double> viewRef = objects->getBalloonShooterViewRef();
             //human view
-            eyeX = objects->shooter_shop_x-53;//- 15*cos(degToRad(objects->shooting_angle_x));
+            eyeX = objects->shooter_shop_x+7;//- 15*cos(degToRad(objects->shooting_angle_x));
             eyeY = objects->shooter_shop_y+15; //location
             eyeZ = -68 ;//+ 15*sin(degToRad(objects->shooting_angle_x));
-            refX = objects->shooter_shop_x-53;//objects->shooter_shop_x+ 15*cos(degToRad(objects->shooting_angle_x)); //angle x is 15
+            refX = objects->shooter_shop_x+7;//objects->shooter_shop_x+ 15*cos(degToRad(objects->shooting_angle_x)); //angle x is 15
             refY = objects->shooter_shop_y+15; //to look towards
             refZ = -100;//objects->shooter_shop_z+5- 15*sin(degToRad(objects->shooting_angle_x));
         }
@@ -327,7 +324,7 @@ void display(void)
 
     //draw the sky
     glPushMatrix();
-    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 800, 800, 800);
+    sky(camera->eyeX + (0.05 * camera->refX), camera->eyeY + (0.05 * camera->refY), camera->eyeZ + (0.05 * camera->refZ), 800, 800, 800, objects->isday);
     glPopMatrix();
     //draw the four lamp posts
     // glPushMatrix();
@@ -345,11 +342,11 @@ void display(void)
     //draw the boundary wall
     objects->walls();
     glPushMatrix();
-    glScalef(2.5,2.5,2.5);
-    glRotatef(90,0,1,0);
-    // glTranslatef(0,10,0);
-    //draw the boundary flags
-    objects->flags();
+        glScalef(2.5,2.5,2.5);
+        glRotatef(90,0,1,0);
+        // glTranslatef(0,10,0);
+        //draw the boundary flags
+        objects->flags();
     glPopMatrix();
     
     glPushMatrix();
@@ -360,47 +357,47 @@ void display(void)
         objects->drawPool();
     glPopMatrix();
 
-    glPushMatrix();
-        glTranslatef(0,0,180);
-        glScalef(2,2,2);
-        glPushMatrix();
-            glTranslatef(-25, 0, 0);
-            objects->lampPost1();
-        glPopMatrix();
+    // glPushMatrix();
+    //     glTranslatef(0,0,180);
+    //     glScalef(2,2,2);
+    //     glPushMatrix();
+    //         glTranslatef(-25, 0, 0);
+    //         objects->lampPost1();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(50, 0, 0);
-        objects->lampPost2();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(50, 0, 0);
+    //     objects->lampPost2();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(50, 0, 30);
-        objects->lampPost3();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(50, 0, 30);
+    //     objects->lampPost3();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(-25, 0, 30);
-        objects->lampPost4();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(-25, 0, 30);
+    //     objects->lampPost4();
+    //     glPopMatrix();
 
     //draw the cafeteria
-        glPushMatrix();
-        glRotatef(-180,0,1,0);
-            glPushMatrix();
-            glTranslatef(0, 10, 10);
-            objects->cafeteria();
-            glPopMatrix();
-        glPopMatrix();
-    glPopMatrix();
+        // glPushMatrix();
+        // 
+    //         glPushMatrix();
+    //         glRotatef(-180,0,1,0);
+    //         glTranslatef(0, 10, 10);
+    //         objects->cafeteria();
+    //         glPopMatrix();
+    //     // glPopMatrix();
+    // glPopMatrix();
 
  //draw the four spotLights
     
-    // spotLight2();
-    // spotLight3();
-    // spotLight4();
+    
     glPushMatrix();
         glTranslatef(0,0,-250);
         glScalef(2,2,2);
+
         glPushMatrix();
         glTranslatef(-25, 0, 0);
         objects->lampPost1();
@@ -410,16 +407,19 @@ void display(void)
         glPushMatrix();
         glTranslatef(50, 0, 0);
         objects->lampPost2();
+        spotLight2();
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(50, 0, 30);
         objects->lampPost3();
+        spotLight3();
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(-25, 0, 30);
         objects->lampPost4();
+        spotLight4();
         glPopMatrix();
 
     //draw the cafeteria
@@ -436,38 +436,38 @@ void display(void)
 
 
 
-    glPushMatrix();
-        glTranslatef(-200,0,-250);
-        glScalef(2,2,2);
-        glPushMatrix();
-        glTranslatef(-25, 0, 0);
-        objects->lampPost1();
-        glPopMatrix();
+    // glPushMatrix();
+    //     glTranslatef(-200,0,-250);
+    //     glScalef(2,2,2);
+    //     glPushMatrix();
+    //     glTranslatef(-25, 0, 0);
+    //     objects->lampPost1();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(50, 0, 0);
-        objects->lampPost2();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(50, 0, 0);
+    //     objects->lampPost2();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(50, 0, 30);
-        objects->lampPost3();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(50, 0, 30);
+    //     objects->lampPost3();
+    //     glPopMatrix();
 
-        glPushMatrix();
-        glTranslatef(-25, 0, 30);
-        objects->lampPost4();
-        glPopMatrix();
+    //     glPushMatrix();
+    //     glTranslatef(-25, 0, 30);
+    //     objects->lampPost4();
+    //     glPopMatrix();
 
-        //draw the cafeteria
-        // glPushMatrix();
-        // glRotatef(-180,0,1,0);
-        glPushMatrix();
-        glTranslatef(0, 10, 10);
-        objects->cafeteria();
-        // glPopMatrix();
-        glPopMatrix();
-    glPopMatrix();
+    //     //draw the cafeteria
+    //     // glPushMatrix();
+    //     // glRotatef(-180,0,1,0);
+    //     glPushMatrix();
+    //     glTranslatef(0, 10, 10);
+    //     objects->cafeteria();
+    //     // glPopMatrix();
+    //     glPopMatrix();
+    // glPopMatrix();
 
 
     //draw the scary house
@@ -545,20 +545,18 @@ void display(void)
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(10,0,10);
-    glScalef(10,10,10);
-    human3D();
+        glTranslatef(10,0,10);
+        glScalef(10,10,10);
+        human3D();
     glPopMatrix();
     glPushMatrix();
-    glTranslatef(-10,0,-10);
-    glScalef(10,10,10);
-    human3D();
+        glTranslatef(-10,0,-10);
+        glScalef(10,10,10);
+        human3D();
     glPopMatrix();
-    // glPopMatrix(); just trying
-    double test_theta = -45;
+    
 
     glDisable(GL_LIGHTING);
-
     glFlush();
     glutSwapBuffers();
 }
