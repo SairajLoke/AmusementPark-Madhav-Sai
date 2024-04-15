@@ -567,6 +567,30 @@ void display(void)
     glRotatef(180,0,1,0);
     drawTree(1,9);
     glPopMatrix();
+    Human* copies=new Human(false);
+    // copies[0]=new Human(false,100,-40, 100);
+    // copies[1]=new Human(false,110,-40, 130);
+    // copies[2]=new Human(false,170,-40, 120);
+    // copies[3]=new Human(false,190,-40, 60);
+    // copies[4]=new Human(false,250,-40, 200);
+    // copies[5]=new Human(false,170,-40, 300);
+    // copies[6]=new Human(false,270,-40, 100);
+    for(int i=0;i<10;i++){
+        glPushMatrix();
+        glTranslatef(copies->human_x+rand()%50, copies->human_y, copies->human_z+rand()%60+30);
+        glScalef(0.2,0.2,0.2);
+        glRotatef(-(90-copies->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
+        copies->drawHuman();
+        glPopMatrix();
+    }
+    for(int i=0;i<10;i++){
+        glPushMatrix();
+        glTranslatef(copies->human_x+rand()%60-80, copies->human_y, copies->human_z+rand()%60+20);
+        glScalef(0.2,0.2,0.2);
+        glRotatef(-(90-copies->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
+        copies->drawHuman();
+        glPopMatrix();
+    }
 
     glDisable(GL_LIGHTING);
     glFlush();
@@ -863,7 +887,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(1200, 900);
-    glutCreateWindow("Imagica Amusement Park");
+    glutCreateWindow("MAgicSA Amusement Park");
     glShadeModel(GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
