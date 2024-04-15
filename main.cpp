@@ -147,8 +147,8 @@ struct Camera {
 
     Camera() {
         eyeX = 0.0;
-        eyeY = -2.0;
-        eyeZ = 125.0;
+        eyeY = 25.0;
+        eyeZ = 175.0;
         refX = 0;
         refY = 5;
         refZ = 0;  
