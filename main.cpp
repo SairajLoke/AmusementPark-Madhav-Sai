@@ -556,13 +556,15 @@ void display(void)
         human3D();
     glPopMatrix();
     glPushMatrix();
-    glScalef(0.1,0.1,0.1);
-    glTranslatef(350,-25,220);
+    glScalef(0.12,0.12,0.12);
+    glTranslatef(350,-35,220);
     drawTree(1,9);
     glPopMatrix();
     glPushMatrix();
-    glScalef(0.1,0.1,0.1);
-    glTranslatef(150,-25,220);
+    
+    glScalef(0.12,0.12,0.12);
+    glTranslatef(350,-35,220);
+    glRotatef(180,0,1,0);
     drawTree(1,9);
     glPopMatrix();
 
