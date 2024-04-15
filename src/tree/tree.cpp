@@ -54,15 +54,21 @@ void drawBranch(float parentLength, float parentRadius, int depth, int branching
         // glEnable(GL_TEXTURE_2D);
         // glBindTexture(GL_TEXTURE_2D, ID2[44]);
         glPushMatrix();
+        
         // glClearColor(05.0 / 255.0, 75.0 / 255.0, 55.0 / 255.0, 1.0f);
         glTranslatef(0, 0, branchLength);
+        glEnable(GL_COLOR_MATERIAL);
         glColor3f(105.0 / 255.0, 75.0 / 255.0, 55.0 / 255.0);
-        glutSolidCone(branchRadius, branchLength, 8, 8);
 
-        glColor3ub(95, 150 * atan (depth), 68);
+        glutSolidCone(branchRadius, branchLength, 8, 8);
+        glDisable(GL_COLOR_MATERIAL);
+        
         // glColor3ub(0, 255, 0);
         glTranslatef(0, 0, branchLength);
-        glutSolidSphere(atan(altitude) * branchRadius * 2, 8, 8); // for fruits.
+        glEnable(GL_COLOR_MATERIAL);
+        glColor3ub(95, 150 * atan (depth), 68);
+        glutSolidSphere(atan(altitude) * branchRadius * 2, 8, 8);
+        glDisable(GL_COLOR_MATERIAL); // for fruits.
         glTranslatef(0, 0, -branchLength);
 
         glPopMatrix();

@@ -147,10 +147,10 @@ struct Camera {
 
     Camera() {
         eyeX = 0.0;
-        eyeY = 0.0;
-        eyeZ = 0.0;
+        eyeY = -2.0;
+        eyeZ = 130.0;
         refX = 0;
-        refY = 0;
+        refY = 5;
         refZ = 0;  
     }
 

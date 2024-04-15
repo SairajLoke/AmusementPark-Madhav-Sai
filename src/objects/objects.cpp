@@ -1058,7 +1058,8 @@ void Objects::walls()
         // tree();
         glPopMatrix();
     }
-
+    //gate
+    
     //second part in front
     for (float i = 20; i <= 360; i += 14)
     {
@@ -1150,7 +1151,34 @@ void Objects::walls()
     glPopMatrix();
     }
 
+    glPushMatrix();
+        glTranslatef(-20, -20, 320);
+        // glRotatef(0, 0, 1, 0);
+        glScalef(10,10,10);
+        for (float j = 0; j <= 4; j += 1)
+        {
+            glPushMatrix();
+            glTranslatef(j, 0, 0);
+            glScalef(0.1, 1.5, 0.1);
+            cubicalShape(0.2, 0.1, 0.1, 0.1, 0.05, 0.05);
+            glPopMatrix();
 
+            glPushMatrix();
+            glTranslatef(j, 4.4, 0.2);
+            glScalef(.4, .4, .4);
+            sphericalShape(0.855, 0.439, 0.839, 0.4275, 0.2195, 0.4195);
+            glPopMatrix();
+        }
+
+        for (float j = 1; j <= 3; j += 1)
+        {
+            glPushMatrix();
+            glTranslatef(0, j, 0);
+            glScalef(1.5, 0.05, 0.1);
+            cubicalShape(0.2, 0.1, 0.1, 0.1, 0.05, 0.05);
+            glPopMatrix();
+        }
+    glPopMatrix();
 
     
     // glDisable(GL_TEXTURE_2D);
