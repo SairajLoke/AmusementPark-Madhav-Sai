@@ -1,7 +1,7 @@
 #include "tree.h"
 int ptr = 0;
 int flag=1;
-int randomNumbers[100000];
+// int randomNumbers[100000];
 int maxDepth;
 // voidglutSolidCylinder(GLdouble radius, GLdouble height, GLint slices, GLint stacks) {
 //     GLUquadricObj* quadric = gluNewQuadric();
@@ -9,18 +9,18 @@ int maxDepth;
 //     gluCylinder(quadric, radius, radius, height, slices, stacks);
 //     gluDeleteQuadric(quadric);
 // }
-int getRandomNumber()
-{
-    ptr++;
-    return randomNumbers[ptr - 1];
-}
-void drawLeaves(float branchLength){
-    // we want tiny spiky leaves
-    // they will be uniformly distributed across the branch
-    // mostly the terminal branch
-    float currentLength = 0;
+// int getRandomNumber()
+// {
+//     ptr++;
+//     return randomNumbers[ptr - 1];
+// }
+// void drawLeaves(float branchLength){
+//     // we want tiny spiky leaves
+//     // they will be uniformly distributed across the branch
+//     // mostly the terminal branch
+//     float currentLength = 0;
 
-}
+// }
 void drawBranch(float parentLength, float parentRadius, int depth, int branchingFactor, float altitude, float zAngle)
 {
 
@@ -45,7 +45,7 @@ void drawBranch(float parentLength, float parentRadius, int depth, int branching
         for (int i = 0; i < branchingFactor; i++)
         {
             // calculate and do shift from branch base
-            float heightFromBase = (0.5f + (getRandomNumber() * 1.0f / RAND_MAX) * 0.5f) * branchLength;
+            float heightFromBase = 0.5f + (static_cast<float>(rand() * 1.0f / RAND_MAX) * 0.5f) * branchLength;
             glPushMatrix();
             glTranslatef(0, 0, heightFromBase);
             drawBranch(branchLength, branchRadius, depth + 1, branchingFactor, altitude + heightFromBase * cos(zAngle), zAngle + theta);
@@ -109,7 +109,7 @@ void drawTree(int seed, int depth)
 
     for (int i = 0; i < branchingFactor; i++)
     {
-        float heightFromBase = (0.5f + ((getRandomNumber() * 0.5f) / RAND_MAX)) * height;
+        float heightFromBase = (0.5f + (static_cast<float>(rand() * 0.5f) / RAND_MAX)) * height;
         // float heightFromBase = 0;
         // glPushMatrix();
         glTranslatef(0, 0, heightFromBase);
