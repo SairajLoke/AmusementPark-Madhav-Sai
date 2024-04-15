@@ -918,8 +918,6 @@ int main(int argc, char **argv)
     LoadTexture("sgi_images/brick_wall.sgi", 35);
 
     LoadTexture("sgi_images/treetext.sgi", 44);
- 
-    
     
 
     glutReshapeFunc(fullScreen);

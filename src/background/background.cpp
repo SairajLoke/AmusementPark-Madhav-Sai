@@ -1,5 +1,5 @@
 #include "background.h"
-
+int skynum=12;
 void ground()
 {
     // Set the number of segments in the circle
@@ -67,11 +67,11 @@ void sky(float x, float y, float z, float width, float height, float length, GLb
     glEnable(GL_TEXTURE_2D);
     if (isday)
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[8]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[12]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
@@ -86,11 +86,11 @@ void sky(float x, float y, float z, float width, float height, float length, GLb
 
     if (isday)
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[27]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[28]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
@@ -105,11 +105,11 @@ void sky(float x, float y, float z, float width, float height, float length, GLb
 
     if (isday == true)
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[9]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[28]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     glBegin(GL_QUADS);
     glTexCoord2f(1.0f, 1.0f);
@@ -124,11 +124,11 @@ void sky(float x, float y, float z, float width, float height, float length, GLb
 
     if (isday == true)
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[10]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[28]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     glBegin(GL_QUADS);
     glTexCoord2f(1.0f, 0.0f);
@@ -143,11 +143,11 @@ void sky(float x, float y, float z, float width, float height, float length, GLb
 
     if (isday == true)
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[11]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     }
     else
     {
-        glBindTexture(GL_TEXTURE_2D, ID2[28]);
+        glBindTexture(GL_TEXTURE_2D, ID2[skynum]);
     } 
     glBegin(GL_QUADS);
     glTexCoord2f(1.0f, 0.0f);
