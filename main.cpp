@@ -170,6 +170,7 @@ struct Camera {
 
         else if(view == HUMAN_VIEW) {
             //human view
+            cout<<human->human_z<<endl;
             eyeX = human->human_x - 15*cos(degToRad(human->angle_x));
             eyeY = 0;
             eyeZ = human->human_z + 15*sin(degToRad(human->angle_x));
@@ -485,9 +486,9 @@ void display(void)
 
     if(!human->sittingRollerCoaster) {
         glPushMatrix();
-        glTranslatef(human->human_x, human->human_y, human->human_z);
+        glTranslatef(human->human_x+50, human->human_y, human->human_z);
         glScalef(0.3,0.3,0.3);
-        glRotatef(-(90-human->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
+        // glRotatef(-(90-human->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
         human->drawHuman();
         glPopMatrix();
     }
@@ -497,7 +498,7 @@ void display(void)
     }
     //draw human
     glPushMatrix();
-        glTranslatef(human2->human_x, human2->human_y, human2->human_z);
+        glTranslatef(human2->human_x+20, human2->human_y, human2->human_z);
         glScalef(0.6,0.6,0.6);
         glRotatef(-(90-human2->angle_x), 0, 1, 0); // rotate w.r.t y axis to simulate orientation of human
         human2->drawHuman();
