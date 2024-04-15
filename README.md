@@ -45,8 +45,8 @@ make
 - [x] Remove some objects and add other better objects with better structures. 
 
 ## Key Assignments
-- **Key 'xaz'**: represent x,y and z axis respectively.
-- **Key 'XAZ'**: represent negative x,y and z axis respectively.
+- **Key 'xaz'**: move in x,y and z axis positive direction respectively.
+- **Key 'XAZ'**: move in x,y,z negative axis direction respectively.
 - **Key 's'** : human sits in roller coster
 - **Key 'e'**: Human out of roller coster
 - **Key 's'**: Set human->sittingRollerCoaster to true, set camera view to 2.
