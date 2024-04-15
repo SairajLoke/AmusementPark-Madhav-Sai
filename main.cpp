@@ -358,39 +358,39 @@ void display(void)
         objects->drawPool();
     glPopMatrix();
 
-    // glPushMatrix();
-    //     glTranslatef(0,0,180);
-    //     glScalef(2,2,2);
-    //     glPushMatrix();
-    //         glTranslatef(-25, 0, 0);
-    //         objects->lampPost1();
-    //     glPopMatrix();
+    glPushMatrix();
+        glTranslatef(0,0,180);
+        glScalef(2,2,2);
+        glPushMatrix();
+            glTranslatef(-25, 0, 0);
+            objects->lampPost1();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(50, 0, 0);
-    //     objects->lampPost2();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(50, 0, 0);
+        objects->lampPost2();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(50, 0, 30);
-    //     objects->lampPost3();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(50, 0, 30);
+        objects->lampPost3();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(-25, 0, 30);
-    //     objects->lampPost4();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(-25, 0, 30);
+        objects->lampPost4();
+        glPopMatrix();
 
-    //draw the cafeteria
-        // glPushMatrix();
-        // 
-    //         glPushMatrix();
-    //         glRotatef(-180,0,1,0);
-    //         glTranslatef(0, 10, 10);
-    //         objects->cafeteria();
-    //         glPopMatrix();
-    //     // glPopMatrix();
-    // glPopMatrix();
+    // draw the cafeteria
+        glPushMatrix();
+        
+            glPushMatrix();
+            glRotatef(-180,0,1,0);
+            glTranslatef(0, 10, 10);
+            objects->cafeteria();
+            glPopMatrix();
+        glPopMatrix();
+    glPopMatrix();
 
  //draw the four spotLights
     
@@ -437,38 +437,38 @@ void display(void)
 
 
 
-    // glPushMatrix();
-    //     glTranslatef(-200,0,-250);
-    //     glScalef(2,2,2);
-    //     glPushMatrix();
-    //     glTranslatef(-25, 0, 0);
-    //     objects->lampPost1();
-    //     glPopMatrix();
+    glPushMatrix();
+        glTranslatef(-200,0,-250);
+        glScalef(2,2,2);
+        glPushMatrix();
+        glTranslatef(-25, 0, 0);
+        objects->lampPost1();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(50, 0, 0);
-    //     objects->lampPost2();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(50, 0, 0);
+        objects->lampPost2();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(50, 0, 30);
-    //     objects->lampPost3();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(50, 0, 30);
+        objects->lampPost3();
+        glPopMatrix();
 
-    //     glPushMatrix();
-    //     glTranslatef(-25, 0, 30);
-    //     objects->lampPost4();
-    //     glPopMatrix();
+        glPushMatrix();
+        glTranslatef(-25, 0, 30);
+        objects->lampPost4();
+        glPopMatrix();
 
-    //     //draw the cafeteria
-    //     // glPushMatrix();
-    //     // glRotatef(-180,0,1,0);
-    //     glPushMatrix();
-    //     glTranslatef(0, 10, 10);
-    //     objects->cafeteria();
-    //     // glPopMatrix();
-    //     glPopMatrix();
-    // glPopMatrix();
+        //draw the cafeteria
+        // glPushMatrix();
+        // glRotatef(-180,0,1,0);
+        glPushMatrix();
+        glTranslatef(0, 10, 10);
+        objects->cafeteria();
+        // glPopMatrix();
+        glPopMatrix();
+    glPopMatrix();
 
 
     //draw the scary house
@@ -478,9 +478,9 @@ void display(void)
         objects->scaryHouse();
     glPopMatrix();
 
-    glPushMatrix();
-        objects->testvec();
-    glPopMatrix();
+    // glPushMatrix();
+    //     objects->testvec();
+    // glPopMatrix();
 
     Human* coasterHuman = NULL;
 
@@ -555,7 +555,10 @@ void display(void)
         glScalef(10,10,10);
         human3D();
     glPopMatrix();
-    
+    glPushMatrix();
+    glScalef(0.3,0.3,0.3);
+    drawTree(1,4);
+    glPopMatrix();
 
     glDisable(GL_LIGHTING);
     glFlush();

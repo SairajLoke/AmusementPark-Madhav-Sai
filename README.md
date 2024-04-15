@@ -41,3 +41,5 @@ make
 - [x] Restricted View
 - [x] Added better keyboard controls
 - [x] Tree texture
+- [x] Larger Park Area with adjusted improvements
+- [x] Remove some objects and add other better objects with better structures. 
