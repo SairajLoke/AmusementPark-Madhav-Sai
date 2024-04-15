@@ -26,7 +26,8 @@ struct Human {
 
     bool sittingRollerCoaster;
 
-    Human(bool sittingRollerCoaster = false, int human_x=0, int human_y=-15, int human_z=100) {
+
+    Human(bool sittingRollerCoaster = false, int human_x=200, int human_y=-2, int human_z=125) {
 
         human_x = human_x;
         human_y = human_y;

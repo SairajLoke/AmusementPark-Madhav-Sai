@@ -1058,7 +1058,7 @@ void Objects::walls()
         // tree();
         glPopMatrix();
     }
-    //gate
+    
     
     //second part in front
     for (float i = 20; i <= 360; i += 14)
@@ -1151,6 +1151,22 @@ void Objects::walls()
     glPopMatrix();
     }
 
+    //gate
+    float gate_board_y = 30;
+    float gate_text_s = 0.05;
+    float gate_text_x = -50;
+    float gate_board_z = 300;
+
+    // glPushMatrix();
+    //     glTranslatef(gate_text_x-2,gate_board_y,gate_board_z);
+    //     glScalef(12, 6, 1);
+    //     quadricShape1();
+    // glPopMatrix();
+
+    stroke_output(gate_text_x+15, gate_board_y+10, gate_board_z+10, gate_text_s, 5, 0, "MA-gica-SA");
+	stroke_output(gate_text_x+5, gate_board_y, gate_board_z+10, gate_text_s, 5, 0, "Amusement Park CS352");
+
+    //gate
     glPushMatrix();
         glTranslatef(-20, -20, 320);
         // glRotatef(0, 0, 1, 0);

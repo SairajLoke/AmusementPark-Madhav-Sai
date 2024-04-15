@@ -148,7 +148,7 @@ struct Camera {
     Camera() {
         eyeX = 0.0;
         eyeY = -2.0;
-        eyeZ = 130.0;
+        eyeZ = 125.0;
         refX = 0;
         refY = 5;
         refZ = 0;  
@@ -172,10 +172,10 @@ struct Camera {
             //human view
             cout<<human->human_z<<endl;
             eyeX = human->human_x - 15*cos(degToRad(human->angle_x));
-            eyeY = 0;
+            eyeY = 5;
             eyeZ = human->human_z + 15*sin(degToRad(human->angle_x));
             refX = human->human_x + 15*cos(degToRad(human->angle_x));
-            refY = 0;
+            refY = 5;
             refZ = human->human_z - 15*sin(degToRad(human->angle_x));
         }
         else if(view == ROLLER_COASTER_VIEW) {
@@ -954,9 +954,9 @@ int main(int argc, char **argv)
     glutReshapeFunc(fullScreen);
     glutKeyboardFunc(myKeyboardFunc);
     glutSpecialFunc(specialKeyboardFunc);
-    glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    // glEnable(GL_BLEND);
+    // glEnable(GL_DEPTH_TEST);
+    // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glutDisplayFunc(display);
     glutIdleFunc(animate);
     glutMotionFunc(mouseMove);
