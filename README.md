@@ -68,4 +68,6 @@ make
 - **Key 'i'**: Increase lighting intensity by 0.1 if < 1.0.
 - **Key 'k'**: Decrease lighting intensity by 0.1 if > 0.0.
 - **Key 'o'**: Toggle objects->activate_sun.
+- **Key 'd'**: Toggle to daytime
+- **Key 'n'**: Toggle to Night time
 - **Key 'ESC' (27)**: Exit program.
