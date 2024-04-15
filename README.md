@@ -37,7 +37,9 @@ make
 - [x] Trees
 - [x] Grass textured ground
 - [x] Night Sky
+- [x] Day Sky
+- [x] Daynight animation  
 - [x] Balloon Shooter game
-- [x] Restricted View
 - [x] Added better keyboard controls
+- [x] Point Source lamps 
 - [x] Tree texture
