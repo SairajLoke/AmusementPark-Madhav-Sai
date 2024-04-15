@@ -36,13 +36,23 @@ make
 - [x] Animated Sunlight ( moves across the sky )
 - [x] Trees
 - [x] Grass textured ground
-- [x] Night Sky
+- [x] Controlled as well as automatic day night system
 - [x] Balloon Shooter game
 - [x] Restricted View
 - [x] Added better keyboard controls
 - [x] Tree texture
 - [x] Larger Park Area with adjusted improvements
-- [x] Remove some objects and add other better objects with better structures. 
+- [x] Better Placement 
+- [x] Larger Park
+- [x] Text Plate at Entrance
+- [x] Entrance gate
+- [x] AroundtheWorld gate animated implementaion
+- [x] A new human anatomy and old structure improved.
+- [x] Crowd Implemented
+- [x] Day-Night implementation and spotlights now have attenuation.
+- [x] 
+
+
 
 ## Key Assignments
 - **Key 'xaz'**: move in x,y and z axis positive direction respectively.
