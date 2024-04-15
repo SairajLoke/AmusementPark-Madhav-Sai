@@ -1,5 +1,4 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#pragma once
 
 #include "../../libs.h"
 
@@ -8,6 +7,4 @@
 
 
 void ground();
-void sky(float x, float y, float z, float width, float height, float length);
-
-#endif
+void sky(float x, float y, float z, float width, float height, float length, GLboolean isday);

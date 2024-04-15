@@ -43,7 +43,7 @@ struct Objects {
     GLfloat shooting_angle_x = 90; 
     GLfloat shop_width = 8;
     GLfloat shop_height = 6;
-
+    GLboolean isday = true;
     // float balloon_shop_z = -15;
 
     float arrow_centre_x_init = 4; //relative to shop origin
